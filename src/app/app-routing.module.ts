@@ -4,9 +4,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { UpdateComponent } from './pages/update/update.component';
 
 const routes: Routes = [
-  {path:'home', component:HomeComponent},
-  {path:'update',component:UpdateComponent},
-  {path:'',redirectTo:'/home'}
+  {path:'home', component:HomeComponent, data:{title:'Home'}},
+  {path:'update',component:UpdateComponent, data:{title:'Update'}},
+  {path:'',redirectTo:'/home', pathMatch:'full'}
 ];
 
 @NgModule({
