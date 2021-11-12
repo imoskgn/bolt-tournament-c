@@ -1,6 +1,6 @@
 export class Match {
   constructor(
-    public _id?: number,
+    public _id?: string,
     public firstPlayerPhone?: string,
     public secondPlayerPhone?: String,
     public winnerPhone?: string,

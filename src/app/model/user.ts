@@ -1,6 +1,6 @@
 export class User {
     constructor(
-        public name: string,
+        public _id: string,
         public phoneNumber: {
             type: string,
             trim: true,
