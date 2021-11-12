@@ -7,16 +7,10 @@ import { Tournament } from './model/tournament';
 
 @Injectable({ providedIn: 'root' })
 export class DbService {
-  private boltUrl = 'http://localhost:3000/';  // URL to web api
-
-  httpOptions = {
-    headers: new HttpHeaders({"Access-Control-Allow-Origin": "http://localhost:4200/","Accept":"*/*" })
-  };
+  private boltUrl = 'https://bolt-tournament-s.herokuapp.com/';  // URL to web api
   
   headerDict = {
     'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Origin': '*'
   }
   
@@ -26,12 +20,10 @@ export class DbService {
 
   constructor(private http: HttpClient) { }
 
-  /** GET Tournamentes from the server */
+  /** GET Tournaments from the server */
   getTournaments(): Observable<Tournament[]> {
     const url = this.boltUrl+'tournament/';
-    console.log(url)
-    console.log(this.requestOptions)
-    return this.http.get<Tournament[]>(url, this.requestOptions)
+    return this.http.get<Tournament[]>(url,this.requestOptions)
       .pipe(
         tap(_ => console.log('fetched tournaments')),
         catchError(this.handleError<Tournament[]>('getTournaments', []))
