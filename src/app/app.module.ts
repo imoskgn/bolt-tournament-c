@@ -8,6 +8,7 @@ import { HeaderComponent } from './partials/header/header.component';
 import { UpdateComponent } from './pages/update/update.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { BasePageComponent } from './partials/base-page/base-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BasePageComponent } from './partials/base-page/base-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
