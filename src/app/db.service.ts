@@ -30,9 +30,9 @@ export class DbService {
       );
   }
 
-/** GET Tournament by id. Return 'undefined' when id not found */
+//   /** GET Tournament by id. Return 'undefined' when id not found */
 //   getTournamentNo404<Data>(id: number): Observable<Tournament> {
-//     const url = `${this.boltUrl}/?id=${id}`;
+//     const url = '${this.boltUrl}/?id=${id}';
 //     return this.http.get<Tournament[]>(url)
 //       .pipe(
 //         map(Tournamentes => Tournamentes[0]), // returns a {0|1} element array
@@ -87,13 +87,13 @@ export class DbService {
 //     );
 //   }
 
-  /** PUT: update the Tournament on the server */
-  updateTournament(Tournament: Tournament, id:string): Observable<any> {
-    return this.http.post(this.boltUrl+'/update/'+id, Tournament, this.requestOptions).pipe(
-      tap(_ => console.log(`updated Tournament id=${Tournament._id}`)),
-      catchError(this.handleError<any>('updateTournament'))
-    );
-  }
+//   /** PUT: update the Tournament on the server */
+//   updateTournament(Tournament: Tournament): Observable<any> {
+//     return this.http.put(this.boltUrl, Tournament, this.httpOptions).pipe(
+//       tap(_ => console.log('updated Tournament id=${Tournament._id}')),
+//       catchError(this.handleError<any>('updateTournament'))
+//     );
+//   }
 
 //   /**
 //    * Handle Http operation that failed.
