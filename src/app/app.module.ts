@@ -9,6 +9,7 @@ import { UpdateComponent } from './pages/update/update.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { BasePageComponent } from './partials/base-page/base-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailComponent } from './pages/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     UpdateComponent,
     FooterComponent,
-    BasePageComponent
+    BasePageComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

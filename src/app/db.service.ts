@@ -44,14 +44,14 @@ export class DbService {
 //       );
 //   }
 
-//   /** GET Tournament by id. Will 404 if id not found */
-//   getTournament(id: number): Observable<Tournament> {
-//     const url = '${this.boltUrl}/${id}';
-//     return this.http.get<Tournament>(url).pipe(
-//       tap(_ => console.log('fetched Tournament id=${id}')),
-//       catchError(this.handleError<Tournament>('getTournament id=${id}'))
-//     );
-//   }
+   /** GET Tournament by id. Will 404 if id not found */
+   getTournament(id: number): Observable<Tournament> {
+     const url = '${this.boltUrl}/${id}';
+     return this.http.get<Tournament>(url).pipe(
+       tap(_ => console.log('fetched Tournament id=${id}')),
+       catchError(this.handleError<Tournament>('getTournament id=${id}'))
+     );
+   }
 
 //   /* GET Tournamentes whose name contains search term */
 //   searchTournamentes(term: string): Observable<Tournament[]> {

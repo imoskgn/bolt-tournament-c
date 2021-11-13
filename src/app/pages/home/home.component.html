@@ -14,11 +14,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let e of tournaments;">
-                <td><a class="view-tournament-button btn" href="/">{{ e.name }}</a></td>
+                <td><a class="view-tournament-button btn" href="/detail">{{ e.name }}</a></td>
                 <td>{{ e.status }}</td>
                 <td> 
                     <a class="delete-button btn" href="/"><i class="fas fa-trash-alt"></i> Delete</a> 
-                    <a class="modify-button btn" href="/"><i class="fas fa-edit"></i> Modify</a> 
+                    <a class="modify-button btn" href="/update"><i class="fas fa-edit"></i> Modify</a> 
                 </td>
             </tr>
         </tbody>
