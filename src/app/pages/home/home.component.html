@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let e of tournaments;">
-                <td><a class="view-tournament-button btn" href="/detail">{{ e.name }}</a></td>
+                <td><a class="view-tournament-button btn" href="/detail/{{ e._id }}">{{ e.name }}</a></td>
                 <td>{{ e.status }}</td>
                 <td> 
                     <a class="delete-button btn" href="/"><i class="fas fa-trash-alt"></i> Delete</a> 

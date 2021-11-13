@@ -1,1 +1,26 @@
-<p>detail works!</p>
+<!--Main Content-->
+<main class="container-fluid">
+    <div class="row py-4 align-items-center">
+        <div class="col-md-5 col-12">
+            <div class="col-10">
+                <h1>Final Results</h1>
+                <p class="fs-4">1.</p>
+                <p class="fs-4">2.</p>
+                <p class="fs-4">3.</p>
+            </div>    
+        </div>
+        <div class="col-md-7 col-12">
+            <div class="col-10" *ngIf="tournament" >
+                <h1>Tournament: {{tournament.name}}</h1>
+                <p>{{tournament.description}}</p>
+                <p>{{tournament.startDate | date:'medium' }} - {{tournament.endDate | date:'medium' }}</p>
+            </div> 
+        </div>
+    </div>
+    <div class="row py-4 align-items-center" *ngIf="tournament">
+        <div class="col-10">
+            <p *ngFor="let player of tournament.playersList;">{{player}}</p>
+        </div>
+    </div>
+  
+  </main>
