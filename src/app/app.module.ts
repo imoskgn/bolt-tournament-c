@@ -9,7 +9,13 @@ import { UpdateComponent } from './pages/update/update.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { BasePageComponent } from './partials/base-page/base-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateComponent } from './pages/create/create.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
 import { DetailComponent } from './pages/detail/detail.component';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +25,17 @@ import { DetailComponent } from './pages/detail/detail.component';
     UpdateComponent,
     FooterComponent,
     BasePageComponent,
-    DetailComponent
+    DetailComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

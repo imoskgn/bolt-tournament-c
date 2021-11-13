@@ -1,28 +1,33 @@
 <div class="justify-content-center div-container">
     <h1>Tournaments</h1>
-    <button type="submit" class="create-tournament-button btn div-center">+ Create New Tournament</button>
-</div>
+    <button routerLink="/create" routeLinkActive="active" type="submit"
+        class="create-tournament-button btn div-center">+ Create New Tournament</button>
 
-<div class="d-flex justify-content-center">
-    <table class="table table-dark" id='tab'>
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Status</th>
-                <th scope="col">Update</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let e of tournaments;">
-                <td><a class="view-tournament-button btn" href="/detail/{{ e._id }}">{{ e.name }}</a></td>
-                <td>{{ e.status }}</td>
-                <td> 
-                    <a class="delete-button btn" href="/"><i class="fas fa-trash-alt"></i> Delete</a> 
-                    <a class="modify-button btn" routerLink="/update/{{ e._id }}"><i class="fas fa-edit"></i> Modify</a> 
-                </td>
-            </tr>
-        </tbody>
-    </table> 
-    
 </div>
-   
+<div class="container">
+    <div class="bg-dark p-5 rounded-lg m-3">
+        <div class="d-flex justify-content-center">
+            <table class="table table-dark" id='tab'>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let e of tournaments;">
+                        <td><a class="" href="/detail/{{ e._id }}">{{ e.name }}</a></td>
+                        <td>{{ e.status }}</td>
+                        <td>
+                            <a class="delete-button btn" href="/"><i class="fas fa-trash-alt"></i> Delete</a>
+                            <a class="modify-button btn" routerLink="/update/{{ e._id }}"><i class="fas fa-edit"></i>
+                                Modify</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

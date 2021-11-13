@@ -5,8 +5,8 @@ export class Tournament {
         public userId?: string,
         public description?: string,
         public status?: string,
-        public playersList?: Array<string>,
-        public currentPlayersList?: Array<string>,
+        public playersList?: Array<any>,
+        public currentPlayersList?: Array<any>,
         public startDate?: Date,
         public endDate?: Date,
         public level?: Number
