@@ -28,7 +28,7 @@ export class UpdateComponent implements OnInit {
     this.routeSub = this.router.params.subscribe(params => {
       this.tournamentId = params['id'];
     });
-    this.dbService.getTournament(this.tournamentId).subscribe(tournament => this.tournaments[0] = tournament)
+    this.dbService.getTournamentById(this.tournamentId).subscribe(tournament => this.tournaments[0] = tournament)
     console.log(this.tournament);
   }
 
