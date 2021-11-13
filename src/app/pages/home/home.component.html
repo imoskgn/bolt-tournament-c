@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let e of tournaments;">
-                        <td>{{ e.name }}</td>
+                        <td><a class="" href="/detail/{{ e._id }}">{{ e.name }}</a></td>
                         <td>{{ e.status }}</td>
                         <td>
                             <button type="submit" class="btn btn-primary">Update</button>
