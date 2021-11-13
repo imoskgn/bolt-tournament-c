@@ -87,13 +87,13 @@ export class DbService {
 //     );
 //   }
 
-//   /** PUT: update the Tournament on the server */
-//   updateTournament(Tournament: Tournament): Observable<any> {
-//     return this.http.put(this.boltUrl, Tournament, this.httpOptions).pipe(
-//       tap(_ => console.log('updated Tournament id=${Tournament._id}')),
-//       catchError(this.handleError<any>('updateTournament'))
-//     );
-//   }
+  /** PUT: update the Tournament on the server */
+  updateTournament(Tournament: Tournament): Observable<any> {
+    return this.http.put(this.boltUrl+`/update/${Tournament._id}`, Tournament, this.requestOptions).pipe(
+      tap(_ => console.log(`updated Tournament id=${Tournament._id}`)),
+      catchError(this.handleError<any>('updateTournament'))
+    );
+  }
 
 //   /**
 //    * Handle Http operation that failed.
@@ -107,7 +107,7 @@ export class DbService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
+      // TODO: better job of transforming   error for user consumption
       console.log('${operation} failed: ${error.message}');
 
       // Let the app keep running by returning an empty result.
