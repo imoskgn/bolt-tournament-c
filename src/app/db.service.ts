@@ -50,6 +50,16 @@ export class DbService {
       console.log(responseDate)
     })
   }
+
+  deleteTournament(id1: string) {
+    console.log('Deleting Tournament ...')
+    const url = this.boltUrl + 'tournament/delete/'+id1;
+
+    this.http.get(url).subscribe(responseDate => {
+      console.log(responseDate)
+    })
+  }
+
   // POST: Update existing Tournament
   updtTournament(tournament: Tournament) {
     console.log(`Updating Tournament: ${tournament._id}`)

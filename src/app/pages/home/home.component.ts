@@ -19,5 +19,4 @@ export class HomeComponent implements OnInit {
     this.dbService.getTournaments().subscribe(tournaments => this.tournaments = tournaments)
     console.log(this.tournaments)
   }
-
 }

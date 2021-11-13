@@ -2,7 +2,6 @@
     <h1>Tournaments</h1>
     <button routerLink="/create" routeLinkActive="active" type="submit"
         class="create-tournament-button btn div-center">+ Create New Tournament</button>
-
 </div>
 <div class="container">
     <div class="bg-dark p-5 rounded-lg m-3">
@@ -20,14 +19,14 @@
                         <td>{{ e.name }}</td>
                         <td>{{ e.status }}</td>
                         <td>
-                            <a class="delete-button btn" href="/"><i class="fas fa-trash-alt"></i> Delete</a>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a class="delete-button btn" routerLink="/"><i class="fas fa-trash-alt"></i> Delete</a>
                             <a class="modify-button btn" routerLink="/update/{{ e._id }}"><i class="fas fa-edit"></i>
                                 Modify</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
