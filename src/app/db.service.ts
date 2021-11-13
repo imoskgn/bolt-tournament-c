@@ -30,9 +30,9 @@ export class DbService {
       );
   }
 
-/** GET Tournament by id. Return 'undefined' when id not found */
+//   /** GET Tournament by id. Return 'undefined' when id not found */
 //   getTournamentNo404<Data>(id: number): Observable<Tournament> {
-//     const url = `${this.boltUrl}/?id=${id}`;
+//     const url = '${this.boltUrl}/?id=${id}';
 //     return this.http.get<Tournament[]>(url)
 //       .pipe(
 //         map(Tournamentes => Tournamentes[0]), // returns a {0|1} element array
@@ -44,14 +44,25 @@ export class DbService {
 //       );
 //   }
 
-   /** GET Tournament by id. Will 404 if id not found */
-   getTournament(id: number): Observable<Tournament> {
-     const url = '${this.boltUrl}/${id}';
-     return this.http.get<Tournament>(url).pipe(
-       tap(_ => console.log('fetched Tournament id=${id}')),
-       catchError(this.handleError<Tournament>('getTournament id=${id}'))
-     );
-   }
+  /** GET Tournament by id. Will 404 if id not found */
+  getTournamentById(id1: string): Observable<Tournament> {
+    // const url = `${this.boltUrl}tournament/${id1}`;
+    const url = this.boltUrl+'tournament/'+id1;
+    return this.http.get<Tournament>(url)
+    .pipe(
+        tap(_ => console.log(`fetched Tournament id=${id1}`)),
+        catchError(this.handleError<Tournament>(`getTournament id=${id1}`))
+    );
+  }
+  //Vara version
+
+  getTournament(id: string): Observable<Tournament> {
+    const url = this.boltUrl+'tournament/'+id;
+    return this.http.get<Tournament>(url).pipe(
+      tap(_ => console.log('fetched Tournament id=${id}')),
+      catchError(this.handleError<Tournament>('getTournament id=${id}'))
+    );
+  }
 
 //   /* GET Tournamentes whose name contains search term */
 //   searchTournamentes(term: string): Observable<Tournament[]> {
@@ -88,8 +99,8 @@ export class DbService {
 //   }
 
   /** PUT: update the Tournament on the server */
-  updateTournament(Tournament: Tournament, id:string): Observable<any> {
-    return this.http.post(this.boltUrl+'/update/'+id, Tournament, this.requestOptions).pipe(
+  updateTournament(Tournament: Tournament): Observable<any> {
+    return this.http.put(this.boltUrl+`/update/${Tournament._id}`, Tournament, this.requestOptions).pipe(
       tap(_ => console.log(`updated Tournament id=${Tournament._id}`)),
       catchError(this.handleError<any>('updateTournament'))
     );
@@ -107,7 +118,7 @@ export class DbService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
+      // TODO: better job of transforming   error for user consumption
       console.log('${operation} failed: ${error.message}');
 
       // Let the app keep running by returning an empty result.

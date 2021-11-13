@@ -18,10 +18,11 @@
                 <td>{{ e.status }}</td>
                 <td> 
                     <a class="delete-button btn" href="/"><i class="fas fa-trash-alt"></i> Delete</a> 
-                    <a class="modify-button btn" href="/update"><i class="fas fa-edit"></i> Modify</a> 
+                    <a class="modify-button btn" routerLink="/update/{{ e._id }}"><i class="fas fa-edit"></i> Modify</a> 
                 </td>
             </tr>
         </tbody>
     </table> 
+    
 </div>
-  
+   
