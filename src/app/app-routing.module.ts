@@ -5,7 +5,7 @@ import { UpdateComponent } from './pages/update/update.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent, data:{title:'Home'}},
-  {path:'update',component:UpdateComponent, data:{title:'Update'}},
+  {path:'update/:id',component:UpdateComponent, data:{title:'Update'}},
   {path:'',redirectTo:'/home', pathMatch:'full'}
 ];
 

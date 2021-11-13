@@ -44,14 +44,25 @@ export class DbService {
 //       );
 //   }
 
-//   /** GET Tournament by id. Will 404 if id not found */
-//   getTournament(id: number): Observable<Tournament> {
-//     const url = '${this.boltUrl}/${id}';
-//     return this.http.get<Tournament>(url).pipe(
-//       tap(_ => console.log('fetched Tournament id=${id}')),
-//       catchError(this.handleError<Tournament>('getTournament id=${id}'))
-//     );
-//   }
+  /** GET Tournament by id. Will 404 if id not found */
+  getTournamentById(id1: string): Observable<Tournament> {
+    // const url = `${this.boltUrl}tournament/${id1}`;
+    const url = this.boltUrl+'tournament/'+id1;
+    return this.http.get<Tournament>(url)
+    .pipe(
+        tap(_ => console.log(`fetched Tournament id=${id1}`)),
+        catchError(this.handleError<Tournament>(`getTournament id=${id1}`))
+    );
+  }
+  //Vara version
+
+  getTournament(id: string): Observable<Tournament> {
+    const url = this.boltUrl+'tournament/'+id;
+    return this.http.get<Tournament>(url).pipe(
+      tap(_ => console.log('fetched Tournament id=${id}')),
+      catchError(this.handleError<Tournament>('getTournament id=${id}'))
+    );
+  }
 
 //   /* GET Tournamentes whose name contains search term */
 //   searchTournamentes(term: string): Observable<Tournament[]> {

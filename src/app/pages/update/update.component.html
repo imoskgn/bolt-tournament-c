@@ -1,1 +1,22 @@
-<app-base-page></app-base-page>
+<div class="justify-content-center div-container">
+    <h1>Tournaments</h1>
+</div>
+
+<div class="d-flex justify-content-center">
+    <table class="table table-dark" id='tab'>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Status</th>
+                <th scope="col">Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of tournaments;">
+                <td>{{ e.name }}</td>
+                <td>{{ e.status }}</td> 
+            </tr>
+        </tbody>
+    </table> 
+</div>
+  
