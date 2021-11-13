@@ -2,23 +2,6 @@
     <h1>Tournaments</h1>
 </div>
 
-<!-- <div class="d-flex justify-content-center">
-    <table class="table table-dark" id='tab'>
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Status</th>
-                <th scope="col">Update</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let e of tournaments;">
-                <td>{{ e.name }}</td>
-                <td>{{ e.status }}</td> 
-            </tr>
-        </tbody>
-    </table> 
-</div> -->
 <div class="container">
     <div class="bg-light p-5 rounded-lg m-3">
         <form #createT="ngForm" (ngSubmit)="onSubmit(createT)">
@@ -30,22 +13,22 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="tournamentName" class="col-form-label">Tournament Name:</label>
-                            <input type="text" class="form-control" id="tournamentName" ngModel name="tournamentName">
+                            <input type="text" class="form-control" id="tournamentName" ngModel name="tournamentName" placeholder= "{{tournaments[0].name}}">
                         </div>
                         <div class="mb-3">
                             <label for="tournamentDesc" class="col-form-label">Description:</label>
-                            <textarea class="form-control" id="tournamentDesc" ngModel name="tournamentDesc"></textarea>
+                            <textarea class="form-control" id="tournamentDesc" ngModel name="tournamentDesc" placeholder= "{{tournaments[0].description}}"></textarea>
                         </div>
                         <div class="row row-cols-2">
                             <div class="mb-3">
                                 <label for="startDate" class="col-form-label">Start Date:</label>
-                                <input matInput [matDatepicker]="startDate" ngModel name="startDate">
+                                <input matInput [matDatepicker]="startDate" ngModel name="startDate" placeholder= "{{tournaments[0].startDate}}">
                                 <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
                                 <mat-datepicker #startDate></mat-datepicker>
                             </div>
                             <div class="mb-3">
                                 <label for="endDate" class="col-form-label">End Date:</label>
-                                <input matInput [matDatepicker]="endDate" ngModel name="endDate">
+                                <input matInput [matDatepicker]="endDate" ngModel name="endDate" placeholder= "{{tournaments[0].endDate}}">
                                 <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
                                 <mat-datepicker #endDate></mat-datepicker>
                             </div>
@@ -60,7 +43,7 @@
                                 <div class="mb-3">
                                     <label for="player1Phone" class="col-form-label">Phone:</label>
                                     <input type="text" class="form-control" id="player1Phone" ngModel
-                                        name="player1Phone">
+                                        name="player1Phone" > 
                                 </div>
                             </div>
                         </div>

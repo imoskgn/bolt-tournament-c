@@ -69,5 +69,4 @@ export class DbService {
       return of(result as T);
     };
   }
-
 }
