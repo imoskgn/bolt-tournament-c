@@ -42,10 +42,10 @@ export class UpdateComponent implements OnInit {
     let _id: string = this.tournamentId;
     this.tournaments[0].name = data.value.tournamentName;
     let userId: string =  '';
-    let description: string = data.value.tournamentDesc;
+    this.tournaments[0].description = data.value.tournamentDesc;
     let status: string = 'created';
-    let startDate: Date = data.value.startDate;
-    let endDate: Date = data.value.endDate;
+    this.tournaments[0].startDate = data.value.startDate;
+    this.tournaments[0].endDate = data.value.endDate;
     let level: string = '1';
 
     let player1 = {
@@ -68,8 +68,8 @@ export class UpdateComponent implements OnInit {
       name: data.value.player4Name,
     };
 
-    let playerList = [player1, player2, player3, player4];
-    
+    this.tournaments[0].playersList = [player1, player2, player3, player4];
+    this.tournaments[0].currentPlayersList = [player1, player2, player3, player4];
     
     console.log(this.tournaments[0]);
     this.dbService.updtTournament(this.tournaments[0]);

@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { DetailComponent } from './pages/detail/detail.component';
+import { DeleteComponent } from './pages/delete/delete.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DetailComponent } from './pages/detail/detail.component';
     FooterComponent,
     BasePageComponent,
     DetailComponent,
-    CreateComponent
+    CreateComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,

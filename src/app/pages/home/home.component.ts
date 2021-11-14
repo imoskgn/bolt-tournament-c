@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tournament } from 'src/app/model/tournament';
 import { DbService } from 'src/app/db.service';
-import {ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
