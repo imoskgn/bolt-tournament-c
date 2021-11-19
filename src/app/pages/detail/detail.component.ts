@@ -12,14 +12,15 @@ import { Match } from 'src/app/model/match';
 })
 export class DetailComponent implements OnInit {
   tournament: Tournament | undefined;
-  matches: Match[]=[];
+  matches: [] = [];
+  lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
   constructor(private router:ActivatedRoute, private dbService: DbService) { }
 
   ngOnInit(): void {
     this.getTournamentById();
-    this.getTournamentMatch();
+    this.getMatchesByTournamentId();
   }
 
   getTournamentById():void{
@@ -30,11 +31,14 @@ export class DetailComponent implements OnInit {
     console.log(this.tournament )
   }
 
-  getTournamentMatch():void{
+  getMatchesByTournamentId():void{
     this.routeSub = this.router.params.subscribe(params => {
       this.tournamentId = params['id'];
     });
-    this.dbService.displayMatchesByTournament(this.tournamentId).subscribe(matches => this.matches = matches)
-    console.log(this.matches )
+    this.dbService.getMatchesByTournamentId(this.tournamentId).subscribe(matches => {
+      this.matches = matches
+      this.lastMatch = matches[matches.length - 1][0];
+
+    })
   }
 }
