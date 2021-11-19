@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Tournament } from './model/tournament';
+import { Match } from './model/match';
 
 
 @Injectable({ providedIn: 'root' })
@@ -40,6 +41,17 @@ export class DbService {
         catchError(this.handleError<Tournament>(`getTournament id=${id1}`))
     );
   }
+
+  displayMatchesByTournament(id1: string): Observable<Match[]> {
+    // const url = `${this.boltUrl}tournament/${id1}`;
+    const url = this.boltUrl+'match/'+id1;
+    return this.http.get<Match[]>(url)
+    .pipe(
+        tap(_ => console.log(`fetched Match-Tournament id=${id1}`)),
+        catchError(this.handleError<Match[]>(`getMatch-Tournament id=${id1}`))
+    );
+  }
+  
  
   //   /** POST: add a new Tournament to the server */
   addTournament(tournament: Tournament) {

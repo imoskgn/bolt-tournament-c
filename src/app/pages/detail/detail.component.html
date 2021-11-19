@@ -17,11 +17,25 @@
             </div> 
         </div>
     </div>
-    <div class="row py-4 align-items-center" *ngIf="tournament">
-        <div class="col-10">
-            <table class="table table-dark" id='tab'>
+    
+    <div class="row py-4 align-items-center" *ngIf="tournament">        
+        <div class="col-12">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active btn"
+                    data-bs-toggle="collapse" href="#dRranks" aria-expanded="true" 
+                    aria-controls="dRranks" role="button"
+                    aria-current="page" >Ranks</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="collapse" href="#dMatchs" aria-expanded="true" 
+                  aria-controls="dMatchs">Matchs</a>
+                </li>
+              </ul>
+            <div class="collapse" id="dRranks">
+            <table class="table table-dark table-striped table-hover" id='tPlayers'>
                 <thead><tr>
-                    <th>Players</th> <th>Matches</th>
+                    <th scope="col">Players</th> <th scope="col">Matches</th>
                 </tr></thead>
                 <tbody>
                     <tr *ngFor="let player of tournament.playersList;">
@@ -29,6 +43,19 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
+            <div class="collapse" id="dMatchs">
+                <table class="table table-dark table-striped table-hover" id='tPlayers'>
+                    <thead><tr>
+                        <th scope="col">Players</th> <th scope="col">Matches</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr *ngFor="let player of tournament.playersList;">
+                            <td>{{player.name}}</td> <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
   
