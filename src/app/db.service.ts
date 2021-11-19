@@ -45,7 +45,7 @@ export class DbService {
 
   displayMatchesByTournament(id1: string): Observable<Match[]> {
     // const url = `${this.boltUrl}tournament/${id1}`;
-    const url = this.boltUrl+'match/'+id1;
+    const url = this.boltUrl+'match/tournament/'+id1;
     return this.http.get<Match[]>(url)
     .pipe(
         tap(_ => console.log(`fetched Match-Tournament id=${id1}`)),

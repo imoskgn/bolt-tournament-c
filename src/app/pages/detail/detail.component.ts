@@ -12,7 +12,7 @@ import { Match } from 'src/app/model/match';
 })
 export class DetailComponent implements OnInit {
   tournament: Tournament | undefined;
-  matchs: Match[]=[];
+  matches: Match[]=[];
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
   constructor(private router:ActivatedRoute, private dbService: DbService) { }
@@ -34,7 +34,7 @@ export class DetailComponent implements OnInit {
     this.routeSub = this.router.params.subscribe(params => {
       this.tournamentId = params['id'];
     });
-    this.dbService.displayMatchesByTournament(this.tournamentId).subscribe(matchs => this.matchs = matchs)
-    console.log(this.matchs )
+    this.dbService.displayMatchesByTournament(this.tournamentId).subscribe(matches => this.matches = matches)
+    console.log(this.matches )
   }
 }
