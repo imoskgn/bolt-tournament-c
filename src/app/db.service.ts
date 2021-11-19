@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Tournament } from './model/tournament';
 import { Match } from './model/match';
+import { TournamentCreate } from './model/tournament_create';
 
 
 @Injectable({ providedIn: 'root' })
@@ -54,7 +55,7 @@ export class DbService {
   
  
   //   /** POST: add a new Tournament to the server */
-  addTournament(tournament: Tournament) {
+  addTournament(tournament: TournamentCreate) {
     console.log('Add Tournament ...')
     const url = this.boltUrl + 'tournament/create';
 

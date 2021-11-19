@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Tournament } from '../../model/tournament';
 import { TournamentCreate } from '../../model/tournament_create';
 import { DbService } from 'src/app/db.service';
 import { Router } from '@angular/router';
@@ -11,7 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent implements OnInit {
-  tournaments: Tournament[] = [];
   constructor(private dbService: DbService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -33,26 +31,47 @@ export class CreateComponent implements OnInit {
 */
 
     let player1 = {
-      phoneNumber: data.value.player1Phone,
-      name: data.value.player1Name,
+      phoneNumber: data.value.pPhone1,
+      name: data.value.pName1,
     };
 
     let player2 = {
-      phoneNumber: data.value.player2Phone,
-      name: data.value.player2Name,
+      phoneNumber: data.value.pPhone2,
+      name: data.value.pName2,
     };
 
     let player3 = {
-      phoneNumber: data.value.player3Phone,
-      name: data.value.player3Name,
+      phoneNumber: data.value.pPhone3,
+      name: data.value.pName3,
     };
 
     let player4 = {
-      phoneNumber: data.value.player4Phone,
-      name: data.value.player4Name,
+      phoneNumber: data.value.pPhone4,
+      name: data.value.pName4,
     };
 
-    let playerList = [player1, player2, player3, player4];
+    let player5 = {
+      phoneNumber: data.value.pPhone5,
+      name: data.value.pName5,
+    };
+
+    let player6 = {
+      phoneNumber: data.value.pPhone6,
+      name: data.value.pName6,
+    };
+
+    let player7 = {
+      phoneNumber: data.value.pPhone7,
+      name: data.value.pName7,
+    };
+
+    let player8 = {
+      phoneNumber: data.value.pPhone8,
+      name: data.value.pName8,
+    };
+
+
+    let playerList = [player1, player2, player3, player4,player5, player6, player7, player8 ];
 
     //let playerList: string[] = [player1,player2,player3,player4];
     //let playerList: string[] =[];
