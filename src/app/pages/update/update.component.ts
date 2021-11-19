@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Tournament } from 'src/app/model/tournament';
+import { Player } from 'src/app/model/player';
 import { DbService } from 'src/app/db.service';
 import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
@@ -11,10 +12,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./update.component.css'],
 })
 export class UpdateComponent implements OnInit {
-  tournament?: Tournament;
+  tournament: Tournament = new Tournament();
   tournaments: Tournament[] = [];
   private routeSub: Subscription | undefined;
   tournamentId: string = '';
+  editable:boolean = false;
 
   constructor(
     private router: ActivatedRoute,
@@ -24,52 +26,77 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTournament();
+    this.checkEditable();
+    if(this.tournaments[0].status == 'created'){
+      this.editable = true;
+    }
+    else{
+      this.editable = false;
+    }
+    console.log(this.tournament);
     this.tournament = this.tournaments[0];
   }
+
+  checkEditable():void{
+    console.log('Inside check')
+    console.log(this.tournaments.length)
+    if(this.tournaments[0].status=='created'){
+      this.editable = true;
+    }
+    else{
+      this.editable = false;
+    }
+  }
+
   getTournament(): void {
     this.routeSub = this.router.params.subscribe((params) => {
       this.tournamentId = params['id'];
     });
     this.dbService
-      .getTournamentById(this.tournamentId)
-      .subscribe((tournament) => (this.tournaments[0] = tournament));
-    console.log(this.tournament);
+      .getTournamentById(this.tournamentId).subscribe(
+      {
+        next: (tournament) => {
+          this.tournaments[0] = tournament;
+          if(tournament.status == 'created'){this.editable = true}
+        }
+      }
+      )
   }
 
   onSubmit(data: NgForm) {
-    console.log(data);
-
     let _id: string = this.tournamentId;
     this.tournaments[0].name = data.value.tournamentName;
-    let userId: string =  '';
     this.tournaments[0].description = data.value.tournamentDesc;
-    let status: string = 'created';
     this.tournaments[0].startDate = data.value.startDate;
     this.tournaments[0].endDate = data.value.endDate;
-    let level: string = '1';
 
-    let player1 = {
-      phoneNumber: data.value.player1Phone,
-      name: data.value.player1Name,
-    };
+    let playerList: Player[] = [];
+    playerList[0].phone = data.value.player1Phone;
+    playerList[0].name = data.value.player1Name;
 
-    let player2 = {
-      phoneNumber: data.value.player2Phone,
-      name: data.value.player2Name,
-    };
+    playerList[1].phone = data.value.player2Phone;
+    playerList[1].name = data.value.player2Name;
 
-    let player3 = {
-      phoneNumber: data.value.player3Phone,
-      name: data.value.player3Name,
-    };
+    playerList[2].phone = data.value.player3Phone;
+    playerList[2].name = data.value.player3Name;
 
-    let player4 = {
-      phoneNumber: data.value.player4Phone,
-      name: data.value.player4Name,
-    };
+    playerList[3].phone = data.value.player4Phone;
+    playerList[3].name = data.value.player4Name;
+    
+    playerList[4].phone = data.value.player5Phone;
+    playerList[4].name = data.value.player5Name;
+    
+    playerList[5].phone = data.value.player6Phone;
+    playerList[5].name = data.value.player6Name;
+    
+    playerList[6].phone = data.value.player7Phone;
+    playerList[6].name = data.value.player7Name;
+    
+    playerList[8].phone = data.value.player8Phone;
+    playerList[8].name = data.value.player8Name;
 
-    this.tournaments[0].playersList = [player1, player2, player3, player4];
-    this.tournaments[0].currentPlayersList = [player1, player2, player3, player4];
+    this.tournaments[0].playersList = playerList;
+    this.tournaments[0].currentPlayersList = playerList;
     
     console.log(this.tournaments[0]);
     this.dbService.updtTournament(this.tournaments[0]);

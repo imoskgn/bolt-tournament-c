@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Tournament } from '../../model/tournament';
 import { TournamentCreate } from '../../model/tournament_create';
 import { DbService } from 'src/app/db.service';
 import { Router } from '@angular/router';
@@ -11,7 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent implements OnInit {
-  tournaments: Tournament[] = [];
   constructor(private dbService: DbService, private router: Router) {}
 
   ngOnInit(): void {}
