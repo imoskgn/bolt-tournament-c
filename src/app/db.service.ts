@@ -34,11 +34,20 @@ export class DbService {
   /** GET Tournament by id. Will 404 if id not found */
   getTournamentById(id1: string): Observable<Tournament> {
     // const url = `${this.boltUrl}tournament/${id1}`;
-    const url = this.boltUrl+'tournament/'+id1;
+    const url = this.boltUrl + 'tournament/' + id1;
     return this.http.get<Tournament>(url)
-    .pipe(
+      .pipe(
         tap(_ => console.log(`fetched Tournament id=${id1}`)),
         catchError(this.handleError<Tournament>(`getTournament id=${id1}`))
+      );
+  }
+
+  getMatchesByTournamentId(id1: string): Observable<[]> {
+    // const url = `${this.boltUrl}tournament/${id1}`;
+    const url = this.boltUrl + 'match/tournament/' + id1;
+    return this.http.get<[]>(url, this.requestOptions).pipe(
+      tap(_ => console.log('fetched matches')),
+      catchError(this.handleError<[]>('getMatchesByTournamentId', []))
     );
   }
  
@@ -63,10 +72,10 @@ export class DbService {
 
   // POST: Update existing Tournament
   updtTournament(tournament: Tournament) {
-    console.log(`Updating Tournament: ${tournament._id}`)
+    console.log(`Updating Tournament: ${ tournament._id }`)
     const url = this.boltUrl + 'tournament/update/'+tournament._id;
 
-    this.http.post(url, tournament).pipe(tap(_ => console.log(`updated Tournament id=${tournament._id}`)),
+    this.http.post(url, tournament).pipe(tap(_ => console.log(`updated Tournament id = ${ tournament._id }`)),
     catchError(this.handleError<any>('updateTournament'))).subscribe(responseDate => {
       console.log(responseDate)
     })

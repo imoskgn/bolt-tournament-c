@@ -7,29 +7,36 @@
                 <p class="fs-4">1.</p>
                 <p class="fs-4">2.</p>
                 <p class="fs-4">3.</p>
-            </div>    
+            </div>
         </div>
         <div class="col-md-7 col-12">
-            <div class="col-10" *ngIf="tournament" >
+            <div class="col-10" *ngIf="tournament">
                 <h1>Tournament: {{tournament.name}}</h1>
                 <p>{{tournament.description}}</p>
                 <p>{{tournament.startDate | date:'medium' }} - {{tournament.endDate | date:'medium' }}</p>
-            </div> 
+            </div>
         </div>
     </div>
     <div class="row py-4 align-items-center" *ngIf="tournament">
-        <div class="col-10">
-            <table class="table table-dark" id='tab'>
-                <thead><tr>
-                    <th>Players</th> <th>Matches</th>
-                </tr></thead>
+        <div class="col-3" *ngFor="let level of matches">
+            <table *ngIf="level" class="table table-dark" id='tab'>
                 <tbody>
-                    <tr *ngFor="let player of tournament.playersList;">
-                        <td>{{player.name}}</td> <td>--</td>
+                    <tr *ngFor="let match of level">
+                        <div><td><button>{{ match.firstPlayer ? match.firstPlayer.name : "" }}</button></td></div>
+                        <div><td><button>{{ match.secondPlayer ? match.secondPlayer.name : ""}}</button></td></div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3">
+            <table class="table table-dark" id='tab'>
+                <tbody *ngIf="lastMatch">
+                    <tr> 
+                        <div><td><button>{{ lastMatch.winner.name }}</button></td></div>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-  
-  </main>
+
+</main>

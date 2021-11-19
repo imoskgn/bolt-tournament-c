@@ -1,11 +1,21 @@
 export class Match {
   constructor(
+    public firstPlayer: {
+      name: string,
+      phone: string
+    },
+    public secondPlayer: {
+      name: string,
+      phone: string
+    },
+    public winner: {
+      name: String,
+      phoneNumber: String
+    },
     public _id?: string,
-    public firstPlayerPhone?: string,
-    public secondPlayerPhone?: String,
-    public winnerPhone?: string,
+    public level?: Number,
+    public ordes?: Number,
     public acive?: boolean,
     public tournamentId?: String,
-    public level?: Number
   ) {}
 }

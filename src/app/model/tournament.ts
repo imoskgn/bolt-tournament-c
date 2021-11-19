@@ -11,7 +11,7 @@ export class Tournament {
         public currentPlayersList?: Array<Player>,
         public startDate?: Date,
         public endDate?: Date,
-        public level?: Number
+        public level?: Number,
     ) {}
   }
   
