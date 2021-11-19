@@ -12,7 +12,7 @@
 
                         <div class="mb-3">
                             <label for="tournamentName" class="col-form-label">Tournament Name:</label>
-                            <input type="text" class="form-control" id="tournamentName" ngModel name="tournamentName">
+                            <input type="text" class="form-control" id="tournamentName" ngModel name="tournamentName" required>
                         </div>
                         <div class="mb-3">
                             <label for="tournamentDesc" class="col-form-label">Description:</label>
@@ -32,62 +32,146 @@
                                 <mat-datepicker #endDate></mat-datepicker>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">Player 1:</label>
-                            <div class="row row-cols-2">
-                                <div class="mb-3">
-                                    <label for="player1Name" class="col-form-label">Name:</label>
-                                    <input type="text" class="form-control" id="player1Name" ngModel name="player1Name">
+
+                        <br>
+
+
+
+                        <div class="row ">
+                            <div class="col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-8 col-sm-2 ">
+                                        Player 1:
+                                    </div>
+                                    <div class="col-4 col-sm-6 ">
+                                        <label for="pName1" class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="pName1" ngModel name="pName1">
+                                    </div>
+                                    <div class="col-4 col-sm-4 ">
+                                        <label for="pPhone1" class="col-form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="pPhone1" ngModel name="pPhone1">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="player1Phone" class="col-form-label">Phone:</label>
-                                    <input type="text" class="form-control" id="player1Phone" ngModel
-                                        name="player1Phone">
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-8 col-sm-2 ">
+                                        Player 5:
+                                    </div>
+                                    <div class="col-4 col-sm-6 ">
+                                        <label for="pName1" class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="pName5" ngModel name="pName5">
+                                    </div>
+                                    <div class="col-4 col-sm-4 ">
+                                        <label for="pPhone5" class="col-form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="pPhone5" ngModel name="pPhone5">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">Player 2:</label>
-                            <div class="row row-cols-2">
-                                <div class="mb-3">
-                                    <label for="player2Name" class="col-form-label">Name:</label>
-                                    <input type="text" class="form-control" id="player2Name" ngModel name="player2Name">
+
+                        <div class="row ">
+                            <div class="col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-8 col-sm-2 ">
+                                        Player 2:
+                                    </div>
+                                    <div class="col-4 col-sm-6 ">
+                                        <label for="pName2" class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="pName2" ngModel name="pName2">
+                                    </div>
+                                    <div class="col-4 col-sm-4 ">
+                                        <label for="pPhone2" class="col-form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="pPhone2" ngModel name="pPhone2">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="player2Phone" class="col-form-label">Phone:</label>
-                                    <input type="text" class="form-control" id="player2Phone" ngModel
-                                        name="player2Phone">
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-8 col-sm-2 ">
+                                        Player 6:
+                                    </div>
+                                    <div class="col-4 col-sm-6 ">
+                                        <label for="pName2" class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="pName6" ngModel name="pName6">
+                                    </div>
+                                    <div class="col-4 col-sm-4 ">
+                                        <label for="pPhone6" class="col-form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="pPhone6" ngModel name="pPhone6">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">Player 3:</label>
-                            <div class="row row-cols-2">
-                                <div class="mb-3">
-                                    <label for="player3Name" class="col-form-label">Name:</label>
-                                    <input type="text" class="form-control" id="player3Name" ngModel name="player3Name">
+
+
+                        <div class="row ">
+                            <div class="col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-8 col-sm-2 ">
+                                        Player 3:
+                                    </div>
+                                    <div class="col-4 col-sm-6 ">
+                                        <label for="pName3" class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="pName3" ngModel name="pName3">
+                                    </div>
+                                    <div class="col-4 col-sm-4 ">
+                                        <label for="pPhone3" class="col-form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="pPhone3" ngModel name="pPhone3">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="player3Phone" class="col-form-label">Phone:</label>
-                                    <input type="text" class="form-control" id="player3Phone" ngModel
-                                        name="player3Phone">
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-8 col-sm-2 ">
+                                        Player 7:
+                                    </div>
+                                    <div class="col-4 col-sm-6 ">
+                                        <label for="pName7" class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="pName7" ngModel name="pName7">
+                                    </div>
+                                    <div class="col-4 col-sm-4 ">
+                                        <label for="pPhone7" class="col-form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="pPhone7" ngModel name="pPhone7">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">Player 4:</label>
-                            <div class="row row-cols-2">
-                                <div class="mb-3">
-                                    <label for="player4Name" class="col-form-label">Name:</label>
-                                    <input type="text" class="form-control" id="player4Name" ngModel name="player4Name">
+
+                        <div class="row ">
+                            <div class="col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-8 col-sm-2 ">
+                                        Player 4:
+                                    </div>
+                                    <div class="col-4 col-sm-6 ">
+                                        <label for="pName4" class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="pName4" ngModel name="pName4">
+                                    </div>
+                                    <div class="col-4 col-sm-4 ">
+                                        <label for="pPhone4" class="col-form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="pPhone4" ngModel name="pPhone4">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="player4Phone" class="col-form-label">Phone:</label>
-                                    <input type="text" class="form-control" id="player4Phone" ngModel
-                                        name="player4Phone">
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-8 col-sm-2 ">
+                                        Player 8:
+                                    </div>
+                                    <div class="col-4 col-sm-6 ">
+                                        <label for="pName8" class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="pName8" ngModel name="pName8">
+                                    </div>
+                                    <div class="col-4 col-sm-4 ">
+                                        <label for="pPhone8" class="col-form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="pPhone8" ngModel name="pPhone8">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
+
 
 
                     </div>
@@ -100,4 +184,4 @@
             </div>
         </form>
     </div>
-</div> 
+</div>
