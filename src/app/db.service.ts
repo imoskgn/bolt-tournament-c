@@ -51,16 +51,6 @@ export class DbService {
       catchError(this.handleError<[]>('getMatchesByTournamentId', []))
     );
   }
-
-  displayMatchesByTournament(id1: string): Observable<Match[]> {
-    // const url = `${this.boltUrl}tournament/${id1}`;
-    const url = this.boltUrl+'match/tournament/'+id1;
-    return this.http.get<Match[]>(url)
-    .pipe(
-        tap(_ => console.log(`fetched Match-Tournament id=${id1}`)),
-        catchError(this.handleError<Match[]>(`getMatch-Tournament id=${id1}`))
-    );
-  }
   
  
   //   /** POST: add a new Tournament to the server */

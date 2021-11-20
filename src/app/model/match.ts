@@ -14,7 +14,7 @@ export class Match {
     },
     public _id?: string,
     public level?: Number,
-    public ordes?: Number,
+    public order?: Number,
     public acive?: boolean,
     public tournamentId?: String,
   ) {}

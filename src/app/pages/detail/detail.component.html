@@ -53,38 +53,60 @@
                     </tbody>
                 </table>
                 </div>
-                <div class="tab-pane fade" id="dMatches" role="tabpanel" aria-labelledby="tabMatch">                   
+                <div class="tab-pane fade container justify-content-center" id="dMatches" role="tabpanel" aria-labelledby="tabMatch">                   
                     
-                        <div class="justify-content-center div-container">
-                            <h1>Single-elimination Tournament </h1>
-                            <h2>Round of 2	Final</h2>
-                            <h2>Round of 4	Semifinals</h2>
-                            <h2>Round of 8	Quarterfinals</h2>
-                            <button routerLink="/create" routeLinkActive="active" type="submit"
-                                class="btn-warning btn div-center">Modify Matches</button>
+                        <div class="row">
+                            <div class="col">
+                                <h1>Single-elimination Tournament </h1>
+                                <h2>Round of 2	Final</h2>
+                                <h2>Round of 4	Semifinals</h2>
+                                <h2>Round of 8	Quarterfinals</h2>
+                                <button routerLink="/create" routeLinkActive="active" type="submit"
+                                class="btn-warning btn div-center">Select match winners</button>
+                            </div>
+                            
                         </div>
 
-                        <div class="row py-4 align-items-center" *ngIf="tournament">
+                        <div class="row py-4 align-items-center justify-content-center" *ngIf="tournament.status==='started'; else elseTournamentStarted">
+                            <!-- Each Match div -->
                             <div class="col-3" *ngFor="let level of matches">
-                                <table *ngIf="level" class="table table-dark" id='tab'>
-                                    <tbody>
-                                        <tr *ngFor="let match of level">
-                                            <div><td><button>{{ match.firstPlayer ? match.firstPlayer.name : "" }}</button></td></div>
-                                            <div><td><button>{{ match.secondPlayer ? match.secondPlayer.name : ""}}</button></td></div>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <!-- *ngIf="level" -->
+                                <div class="btn-group btn-group-vertical py-2 w-100"
+                                role="group" aria-label="Basic radio toggle button group"
+                                *ngFor="let match of level">
+                                    <!-- Player 1  -->
+                                    <input type="radio" class="btn-check" 
+                                    name="btnradio{{ match.level }}{{ match.order }}" 
+                                    id="btnradio{{ match.level }}{{ match.order }}P1" autocomplete="off">
+
+                                    <label class="btn btn-outline-warning" 
+                                    for="btnradio{{ match.level }}{{ match.order }}P1">
+                                    <i class="fas fa-user"></i>
+                                    {{ match.firstPlayer ? match.firstPlayer.name : "" }}</label>
+
+                                    <!-- Player 2  -->
+                                    <input type="radio" class="btn-check" 
+                                    name="btnradio{{ match.level }}{{ match.order }}" 
+                                    id="btnradio{{ match.level }}{{ match.order }}P2" autocomplete="off">
+
+                                    <label class="btn btn-outline-warning" 
+                                    for="btnradio{{ match.level }}{{ match.order }}P2">
+                                    <i class="fas fa-user"></i>
+                                     {{ match.secondPlayer ? match.secondPlayer.name : ""}}</label>
+
+                                </div>
                             </div>
                             <div class="col-3">
-                                <table class="table table-dark" id='tab'>
-                                    <tbody *ngIf="lastMatch">
-                                        <tr> 
-                                            <div><td><button>{{ lastMatch.winner.name }}</button></td></div>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <button type="button" *ngIf="lastMatch"
+                                class="btn btn-warning py-2 w-100">
+                                <i class="fas fa-user"></i>{{ lastMatch.winner.name }}</button>
                             </div>
-                        </div>    
+                        </div> 
+                        <!-- Tournament Not starter div - Empty Matches content -->
+                        <ng-template #elseTournamentStarted><div class="row py-4 align-items-center">                               
+                                <h1>Tournament hasn't started yet</h1>
+                                <p>Insert Blank Image</p>
+                        </div> </ng-template>   
                     
                 </div>
             </div>    
