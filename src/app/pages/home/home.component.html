@@ -1,7 +1,7 @@
 <div class="justify-content-center div-container">
     <h1>Tournaments</h1>
     <button routerLink="/create" routeLinkActive="active" type="submit"
-        class="create-tournament-button btn div-center">+ Create New Tournament</button>
+        class="create-tournament-button btn div-center"><i class="fas fa-plus-circle"></i> Create New Tournament</button>
 </div>
 <div class="container">
     <div class="bg-dark p-5 rounded-lg m-3">
@@ -16,14 +16,14 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let e of tournaments;">
-                        <td><a class="" href="/detail/{{ e._id }}">{{ e.name }}</a></td>
+                        <td><a class="view-tournament-button btn" href="/detail/{{ e._id }}">{{ e.name }}</a></td>
                         <td>{{ e.status }}</td>
                         <td>
                             <a class="delete-button btn" routerLink="/delete/{{ e._id }}"><i class="fas fa-trash-alt"></i> Delete</a>
                             <span *ngIf='!(e.status == "started")'>
                                 <a class="modify-button btn" routerLink="/update/{{ e._id }}"><i class="fas fa-edit"></i>
                                     Modify</a>
-                                <a class="modify-button btn" (click)='startTournament(e)'>
+                                <a class="start-button btn" (click)='startTournament(e)'>
                                     Start</a>    
                             </span> 
                         </td>

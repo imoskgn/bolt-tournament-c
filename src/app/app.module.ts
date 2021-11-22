@@ -16,6 +16,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { DetailComponent } from './pages/detail/detail.component';
 import { DeleteComponent } from './pages/delete/delete.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { DeleteComponent } from './pages/delete/delete.component';
     BasePageComponent,
     DetailComponent,
     CreateComponent,
-    DeleteComponent
+    DeleteComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

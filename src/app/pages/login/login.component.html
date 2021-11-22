@@ -1,0 +1,29 @@
+<div role="document" class="modal-dialog">
+    <div class="modal-content">
+        <form>
+                <div class="modal-header">
+                    <h1 class="modal-title" id="loginTitleLabel">Login</h1>
+                    <button type="button" class="btn close-model-button" data-bs-dismiss="modal" routerLink="/home"
+                    routeLinkActive="active"> X </button>
+                </div>
+
+                <div class="modal-body ">
+                    <div class="mb-3">
+                        <label class="col-form-label">Phone Number:</label>
+                        <input type="text" class="form-control" id="phonenumber" ngModel name="phoneNumber">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Password:</label>
+                        <input type="password" class="form-control" id="password" ngModel name="password">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary text-left">Sign In</button>
+                    <a>Don't have an account?</a>
+                    <button type="button" class="btn signup-button" routerLink="/register" routeLinkActive="active">Sign up</button>
+                    <a href="/">Forgot Password?</a>
+                </div>
+        </form>
+    </div>
+</div> 

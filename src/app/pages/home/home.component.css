@@ -56,7 +56,17 @@ table {
   }
   
   .modify-button {
-    background-color: rgb(22, 105, 1);
+    background-color: rgb(5, 32, 151);
+    color: white;
+    padding: 1px 10px;
+    text-align: center;
+    font-size: 12px;
+    margin-left:10px;
+    cursor: pointer;
+  }
+
+  .start-button {
+    background-color: rgb(28, 110, 3);
     color: white;
     padding: 1px 10px;
     text-align: center;

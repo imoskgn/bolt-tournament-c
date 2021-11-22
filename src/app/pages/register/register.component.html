@@ -1,0 +1,40 @@
+<div role="document" class="modal-dialog">
+    <div class="modal-content">
+        <form>
+            <div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="signupLabel">Signup</h1>
+                        <button type="button" class="btn close-model-button" data-bs-dismiss="modal" routerLink="/home"
+                    routeLinkActive="active"> X </button>
+                    </div> 
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" ngModel name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobileNumber" class="col-form-label">Mobile Number:</label>
+                            <input type="number" class="form-control" id="mobileNumber" ngModel name="mobileNumber">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" ngModel name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Password:</label>
+                            <input type="password" class="form-control" id="password" ngModel name="password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn signup-button" routerLink="/home" routeLinkActive="active">Sign up</button>
+                        <a>Already have an account?</a>
+                        <button type="button" class="btn btn-primary" routerLink="/login" routeLinkActive="active">Sign in here</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" routerLink="/home"
+                        routeLinkActive="active">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div> 
