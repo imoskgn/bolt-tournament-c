@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Tournament } from 'src/app/model/tournament';
 import { DbService } from 'src/app/db.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Match } from 'src/app/model/match';
+
 
 @Component({
   selector: 'app-detail',
@@ -16,7 +17,7 @@ export class DetailComponent implements OnInit {
   lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
-  constructor(private router:ActivatedRoute, private dbService: DbService) { }
+  constructor(private router:ActivatedRoute, private dbService: DbService, private route:Router) { }
 
   ngOnInit(): void {
     this.getTournamentById();
@@ -40,5 +41,19 @@ export class DetailComponent implements OnInit {
       this.lastMatch = matches[matches.length - 1][0];
 
     })
+  }
+  startTournament( t : Tournament): void{ 
+    let playerName : any | undefined;
+    playerName = t.playersList;
+    for (let i = 0; i < playerName.length; i++) {
+      if (playerName[i].name =="")
+        {this.route.navigate(['/update/', t._id])
+        break;}
+      else {
+        t.status = "started";
+        this.dbService.updtTournament(t);
+        this.dbService.createMatch(t);
+      }
+    } 
   }
 }

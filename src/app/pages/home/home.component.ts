@@ -25,10 +25,9 @@ export class HomeComponent implements OnInit {
     console.log(this.tournaments)
   }
 
-  checkPlayerRegistered( t : Tournament): void{ 
+  startTournament( t : Tournament): void{ 
     let playerName : any | undefined;
     playerName = t.playersList;
-   // var registered : boolean = true;
     for (let i = 0; i < playerName.length; i++) {
       if (playerName[i].name =="")
         {this.router.navigate(['/update/', t._id])

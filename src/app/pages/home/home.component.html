@@ -23,7 +23,7 @@
                             <span *ngIf='!(e.status == "started")'>
                                 <a class="modify-button btn" routerLink="/update/{{ e._id }}"><i class="fas fa-edit"></i>
                                     Modify</a>
-                                <a class="modify-button btn" (click)='checkPlayerRegistered(e)'>
+                                <a class="modify-button btn" (click)='startTournament(e)'>
                                     Start</a>    
                             </span> 
                         </td>

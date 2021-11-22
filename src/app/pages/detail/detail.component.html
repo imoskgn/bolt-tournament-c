@@ -3,10 +3,18 @@
     <div class="row py-4 align-items-center">
         <div class="col-md-5 col-12">
             <div class="col-10">
-                <h1>Final Results</h1>
-                <p class="fs-4">1.</p>
-                <p class="fs-4">2.</p>
-                <p class="fs-4">3.</p>
+            <span *ngIf="tournament">
+                <span *ngIf= 'tournament.status== "started"'>
+                    <h1>Final Results</h1>
+                    <p class="fs-4">1.</p>
+                    <p class="fs-4">2.</p>
+                    <p class="fs-4">3.</p>
+                </span>
+                <span *ngIf= '!(tournament.status== "started")'>
+                <a class="modify-button btn" (click)='startTournament(tournament)'>
+                    Start</a> 
+                </span>
+            </span>
             </div>
         </div>
         <div class="col-md-7 col-12">
