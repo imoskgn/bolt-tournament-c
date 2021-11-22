@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Tournament } from 'src/app/model/tournament';
 import { DbService } from 'src/app/db.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -11,8 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
   tournaments: Tournament[]=[];
   title: string | undefined;
-  router: any;
-  constructor(private dbService: DbService, private route: ActivatedRoute) { }
+  constructor(private dbService: DbService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getTournaments();
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.dbService.getTournaments().subscribe(tournaments => this.tournaments = tournaments)
     console.log(this.tournaments)
   }
+
   checkPlayerRegistered( t : Tournament): void{ 
     let playerName : any | undefined;
     playerName = t.playersList;
@@ -34,8 +36,7 @@ export class HomeComponent implements OnInit {
       else {
         t.status = "started";
         this.dbService.updtTournament(t);
-       // this.dbService.createMatch(t);
-        //this.router.navigate(['/detail/', t._id]) 
+        this.dbService.createMatch(t);
       }
     } 
   }
