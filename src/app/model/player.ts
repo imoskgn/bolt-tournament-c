@@ -1,6 +1,6 @@
 export class Player {
     constructor(
-      public phone: number,
+      public phoneNumber: number,
       public name?: string
     ) {}
   }

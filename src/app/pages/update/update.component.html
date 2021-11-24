@@ -15,41 +15,42 @@
                         <div class="mb-3">
                             <label for="tournamentName" class="col-form-label">Tournament Name:</label>
                             <input type="text" class="form-control" id="tournamentName" ngModel name="tournamentName"
-                                placeholder="{{tournaments[0].name}}">
+                                placeholder="{{ tournaments[0] ? tournaments[0].name : '' }}" />
                         </div>
                         <div class="mb-3">
                             <label for="tournamentDesc" class="col-form-label">Description:</label>
                             <textarea class="form-control" id="tournamentDesc" ngModel name="tournamentDesc"
-                                placeholder="{{tournaments[0].description}}"></textarea>
+                                placeholder="{{ tournaments[0] ? tournaments[0].description : '' }}"></textarea>
                         </div>
                         <div class="row row-cols-2">
                             <div class="mb-3">
                                 <label for="startDate" class="col-form-label">Start Date:</label>
                                 <input matInput [matDatepicker]="startDate" ngModel name="startDate"
-                                    placeholder="{{tournaments[0].startDate}}">
+                                    placeholder="{{ tournaments[0] ? tournaments[0].startDate : '' }}">
                                 <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
                                 <mat-datepicker #startDate></mat-datepicker>
                             </div>
                             <div class="mb-3">
                                 <label for="endDate" class="col-form-label">End Date:</label>
                                 <input matInput [matDatepicker]="endDate" ngModel name="endDate"
-                                    placeholder="{{tournaments[0].endDate}}">
+                                    placeholder="{{ tournaments[0] ? tournaments[0].endDate : '' }}">
                                 <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
                                 <mat-datepicker #endDate></mat-datepicker>
                             </div>
                         </div>
-                        <div *ngIf="editable">
+                        <div *ngIf="editable && tournaments[0] && tournaments[0].playersList">
                             <div class="mb-3" >
                                 <label class="col-form-label">Player 1:</label>
                                 <div class="row row-cols-2">
                                     <div class="mb-3">
                                         <label for="player1Name" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="player1Name" ngModel name="player1Name">
+                                        <input type="text" class="form-control" id="player1Name" ngModel name="player1Name"
+                                        placeholder="{{ tournaments[0].playersList[0] ? tournaments[0].playersList[0].name : '' }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="player1Phone" class="col-form-label">Phone:</label>
                                         <input type="text" class="form-control" id="player1Phone" ngModel
-                                            name="player1Phone">
+                                            name="player1Phone" value="{{ tournaments[0].playersList[0] ? tournaments[0].playersList[0].phoneNumber : '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -58,12 +59,13 @@
                                 <div class="row row-cols-2">
                                     <div class="mb-3">
                                         <label for="player2Name" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="player2Name" ngModel name="player2Name">
+                                        <input type="text" class="form-control" id="player2Name" ngModel name="player2Name"
+                                        placeholder="{{ tournaments[0].playersList[1] ? tournaments[0].playersList[1].name : ''}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="player2Phone" class="col-form-label">Phone:</label>
                                         <input type="text" class="form-control" id="player2Phone" ngModel
-                                            name="player2Phone">
+                                            name="player2Phone" placeholder="{{ tournaments[0].playersList[1] ? tournaments[0].playersList[1].phoneNumber : ''}}">
                                     </div>
                                 </div>
                             </div>
@@ -72,12 +74,13 @@
                                 <div class="row row-cols-2">
                                     <div class="mb-3">
                                         <label for="player3Name" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="player3Name" ngModel name="player3Name">
+                                        <input type="text" class="form-control" id="player3Name" ngModel 
+                                        name="player3Name" placeholder="{{ tournaments[0].playersList[2] ? tournaments[0].playersList[2].name : ''}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="player3Phone" class="col-form-label">Phone:</label>
                                         <input type="text" class="form-control" id="player3Phone" ngModel
-                                            name="player3Phone">
+                                            name="player3Phone" placeholder="{{ tournaments[0].playersList[2] ? tournaments[0].playersList[2].phoneNumber : ''}}">
                                     </div>
                                 </div>
                             </div>
@@ -86,12 +89,13 @@
                                 <div class="row row-cols-2">
                                     <div class="mb-3">
                                         <label for="player4Name" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="player4Name" ngModel name="player4Name">
+                                        <input type="text" class="form-control" id="player4Name" ngModel 
+                                        name="player4Name" placeholder="{{ tournaments[0].playersList[3] ? tournaments[0].playersList[3].name : '' }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="player4Phone" class="col-form-label">Phone:</label>
                                         <input type="text" class="form-control" id="player4Phone" ngModel
-                                            name="player4Phone">
+                                            name="player4Phone" placeholder="{{ tournaments[0].playersList[3] ? tournaments[0].playersList[3].phoneNumber : ''}}">
                                     </div>
                                 </div>
                             </div>
@@ -100,12 +104,13 @@
                                 <div class="row row-cols-2">
                                     <div class="mb-3">
                                         <label for="player5Name" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="player5Name" ngModel name="player5Name">
+                                        <input type="text" class="form-control" id="player5Name" ngModel 
+                                        name="player5Name" placeholder="{{ tournaments[0].playersList[4] ? tournaments[0].playersList[4].name : ''}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="player5Phone" class="col-form-label">Phone:</label>
                                         <input type="text" class="form-control" id="player5Phone" ngModel
-                                            name="player5Phone">
+                                            name="player5Phone" placeholder="{{ tournaments[0].playersList[4] ? tournaments[0].playersList[4].phoneNumber : ''}}">
                                     </div>
                                 </div>
                             </div>
@@ -114,12 +119,13 @@
                                 <div class="row row-cols-2">
                                     <div class="mb-3">
                                         <label for="player6Name" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="player6Name" ngModel name="player6Name">
+                                        <input type="text" class="form-control" id="player6Name" ngModel 
+                                        name="player6Name" placeholder="{{ tournaments[0].playersList[5] ? tournaments[0].playersList[5].name : ''}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="player6Phone" class="col-form-label">Phone:</label>
                                         <input type="text" class="form-control" id="player6Phone" ngModel
-                                            name="player6Phone">
+                                            name="player6Phone" placeholder="{{ tournaments[0].playersList[5] ? tournaments[0].playersList[5].phoneNumber : '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -128,12 +134,13 @@
                                 <div class="row row-cols-2">
                                     <div class="mb-3">
                                         <label for="player7Name" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="player7Name" ngModel name="player7Name">
+                                        <input type="text" class="form-control" id="player7Name" ngModel 
+                                        name="player7Name" placeholder="{{ tournaments[0].playersList[6] ? tournaments[0].playersList[6].name : ''}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="player7Phone" class="col-form-label">Phone:</label>
                                         <input type="text" class="form-control" id="player7Phone" ngModel
-                                            name="player7Phone">
+                                            name="player7Phone" placeholder="{{ tournaments[0].playersList[6] ? tournaments[0].playersList[6].phoneNumber : '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -142,12 +149,13 @@
                                 <div class="row row-cols-2">
                                     <div class="mb-3">
                                         <label for="player8Name" class="col-form-label">Name:</label>
-                                        <input type="text" class="form-control" id="player8Name" ngModel name="player8Name">
+                                        <input type="text" class="form-control" id="player8Name" ngModel 
+                                        name="player8Name"  placeholder="{{ tournaments[0].playersList[7] ? tournaments[0].playersList[7].name : ''}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="player8Phone" class="col-form-label">Phone:</label>
                                         <input type="text" class="form-control" id="player8Phone" ngModel
-                                            name="player8Phone">
+                                            name="player8Phone"  placeholder="{{ tournaments[0].playersList[7] ? tournaments[0].playersList[7].phoneNumber : '' }}">
                                     </div>
                                 </div>
                             </div>
