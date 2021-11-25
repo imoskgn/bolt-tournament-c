@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Tournament } from 'src/app/model/tournament';
 import { DbService } from 'src/app/db.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Match } from 'src/app/model/match';
 
@@ -13,9 +13,11 @@ import { Match } from 'src/app/model/match';
 export class DetailComponent implements OnInit {
   tournament: Tournament | undefined;
   matches: [] = [];
+  winnersEditing: boolean=false;
   lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
+  @ViewChild('btnradio11P1') myDiv: ElementRef | undefined;
   constructor(private router:ActivatedRoute, private dbService: DbService) { }
 
   ngOnInit(): void {
@@ -40,5 +42,18 @@ export class DetailComponent implements OnInit {
       this.lastMatch = matches[matches.length - 1][0];
 
     })
+  }
+
+  loadWinnersEditing() {
+    this.winnersEditing = true;
+  }
+  ngAfterViewInit() {
+    if(this.myDiv){
+      
+      console.log(this.myDiv.nativeElement.innerHTML);
+    }else{
+      console.log('Undefined id');
+    }
+    
   }
 }

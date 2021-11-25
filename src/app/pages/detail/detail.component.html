@@ -42,72 +42,112 @@
               </ul>
             <div class="tab-content" id="tContent">
                 <div class="tab-pane fade show active" id="dRranks" role="tabpanel" aria-labelledby="tabRank">
-                <table class="table table-dark table-striped table-hover" id='tPlayers'>
-                    <thead><tr>
-                        <th scope="col">Players</th> <th scope="col">Matches</th>
-                    </tr></thead>
-                    <tbody>
-                        <tr *ngFor="let player of tournament.playersList;">
-                            <td>{{player.name}}</td> <td>--</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="table table-dark table-striped table-hover" id='tPlayers'>
+                        <thead><tr>
+                            <th scope="col">Players</th> <th scope="col">Matches</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr *ngFor="let player of tournament.playersList;">
+                                <td>{{player.name}}</td> <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="tab-pane fade container justify-content-center" id="dMatches" role="tabpanel" aria-labelledby="tabMatch">                   
-                    
-                        <div class="row">
-                            <div class="col">
-                                <h1>Single-elimination Tournament </h1>
-                                <h2>Round of 2	Final</h2>
-                                <h2>Round of 4	Semifinals</h2>
-                                <h2>Round of 8	Quarterfinals</h2>
-                                <button routerLink="/create" routeLinkActive="active" type="submit"
-                                class="btn-warning btn div-center">Select match winners</button>
-                            </div>
-                            
+                <div class="tab-pane fade container justify-content-center" id="dMatches" 
+                 role="tabpanel" aria-labelledby="tabMatch">                   
+                    <div class="row">
+                        <div class="col">
+                            <h1>Single-elimination Tournament </h1>
+                            <h2>Round of 2	Final</h2>
+                            <h2>Round of 4	Semifinals</h2>
+                            <h2>Round of 8	Quarterfinals</h2>
+                            <!-- For Owners: *ngIf="Owner" -->
+                            <button 
+                            (click)="loadWinnersEditing();"
+                            class="btn-warning btn div-center">Select match winners</button>
                         </div>
-
-                        <div class="row py-4 align-items-center justify-content-center" *ngIf="tournament.status==='started'; else elseTournamentStarted">
-                            <!-- Each Match div -->
+                        
+                    </div>
+                    <!-- For Owners: *ngIf="Owner" and the tournament started -->
+                    <div *ngIf="tournament.status==='started'; else elseTournamentStarted">
+                        <!--For Owners: Each Match div *ngIf="winnersEditing"-->
+                        <div *ngIf="winnersEditing; else winnersMatchDetails">
+                            <div class="row py-4 align-items-center justify-content-center" >                            
+                                <div class="col-3" *ngFor="let level of matches">
+                                    <!--  *ngIf="level"  -->
+                                    <div class="btn-group btn-group-vertical py-2 w-100"
+                                    role="group" aria-label="Basic radio toggle button group"
+                                    *ngFor="let match of level">
+                                        <!-- Player 1  -->
+                                        <input type="radio" class="btn-check" 
+                                        name="btnradio{{ match.level }}{{ match.order }}" 
+                                        id="btnradio{{ match.level }}{{ match.order }}P1" autocomplete="off"
+                                        >
+    
+                                        <label class="btn btn-outline-warning" 
+                                        for="btnradio{{ match.level }}{{ match.order }}P1">
+                                        <i class="fas fa-user"></i>
+                                        {{ match.firstPlayer ? match.firstPlayer.name : "" }}</label>
+    
+                                        <!-- Player 2  -->
+                                        <input type="radio" class="btn-check" 
+                                        name="btnradio{{ match.level }}{{ match.order }}" 
+                                        id="btnradio{{ match.level }}{{ match.order }}P2" autocomplete="off">
+    
+                                        <label class="btn btn-outline-warning" 
+                                        for="btnradio{{ match.level }}{{ match.order }}P2">
+                                        <i class="fas fa-user"></i>
+                                            {{ match.secondPlayer ? match.secondPlayer.name : ""}}</label>
+    
+                                    </div>
+                                </div>
+                                
+                                <div class="col-3" *ngIf="lastMatch">
+                                    <button type="button" 
+                                    class="btn btn-warning py-2 w-100">
+                                    <i class="fas fa-user"></i>{{ lastMatch.winner.name }}</button>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <!-- GENERAL VIEW *ngIf="level" -->
+                    <ng-template #winnersMatchDetails>
+                        <div class="row py-4 align-items-center justify-content-center" >                            
                             <div class="col-3" *ngFor="let level of matches">
-                                <!-- *ngIf="level" -->
+                                <!--  *ngIf="level"  -->
                                 <div class="btn-group btn-group-vertical py-2 w-100"
-                                role="group" aria-label="Basic radio toggle button group"
+                                role="group" aria-label="Basic"
                                 *ngFor="let match of level">
-                                    <!-- Player 1  -->
-                                    <input type="radio" class="btn-check" 
-                                    name="btnradio{{ match.level }}{{ match.order }}" 
-                                    id="btnradio{{ match.level }}{{ match.order }}P1" autocomplete="off">
-
-                                    <label class="btn btn-outline-warning" 
-                                    for="btnradio{{ match.level }}{{ match.order }}P1">
-                                    <i class="fas fa-user"></i>
-                                    {{ match.firstPlayer ? match.firstPlayer.name : "" }}</label>
-
-                                    <!-- Player 2  -->
-                                    <input type="radio" class="btn-check" 
-                                    name="btnradio{{ match.level }}{{ match.order }}" 
-                                    id="btnradio{{ match.level }}{{ match.order }}P2" autocomplete="off">
-
-                                    <label class="btn btn-outline-warning" 
-                                    for="btnradio{{ match.level }}{{ match.order }}P2">
-                                    <i class="fas fa-user"></i>
-                                     {{ match.secondPlayer ? match.secondPlayer.name : ""}}</label>
-
+                                    <!-- Player 1  -->    
+                                    <button 
+                                     type="button" class="btn btn-{{ match.firstPlayer.name===match.winner.name ? 'warning' : 'dark' }}">
+                                        <i class="fas fa-user"></i> {{ match.firstPlayer ? match.firstPlayer.name : "" }}
+                                    </button>
+                                    
+                                    <!-- Player 2  -->                                       
+                                    <button
+                                     type="button" class="btn btn-dark">
+                                        <i class="fas fa-user"></i> {{ match.secondPlayer ? match.secondPlayer.name : "" }}
+                                    </button>                                 
+                                    
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <button type="button" *ngIf="lastMatch"
+                            
+                            <div class="col-3" *ngIf="lastMatch">
+                                <button type="button" 
                                 class="btn btn-warning py-2 w-100">
                                 <i class="fas fa-user"></i>{{ lastMatch.winner.name }}</button>
                             </div>
+                        </div>
+                    </ng-template>
+                    <!-- Tournament Not starter div - Empty Matches content -->
+                    <ng-template #elseTournamentStarted>
+                        <div class="row py-4 align-items-center">                               
+                            <h1>Tournament hasn't started yet</h1>
+                            <p>Insert Blank Image</p>
                         </div> 
-                        <!-- Tournament Not starter div - Empty Matches content -->
-                        <ng-template #elseTournamentStarted><div class="row py-4 align-items-center">                               
-                                <h1>Tournament hasn't started yet</h1>
-                                <p>Insert Blank Image</p>
-                        </div> </ng-template>   
-                    
+                    </ng-template>   
+                
                 </div>
             </div>    
         </div>
