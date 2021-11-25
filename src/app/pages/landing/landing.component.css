@@ -1,0 +1,95 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  th {
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  td {
+    text-align: left;
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #636262;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 8px;
+  }
+
+  .create-tournament-button {
+    background-color: #dfbe04;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+
+.view-tournament-button {
+  background-color: rgb(2, 102, 133);
+  border: none;
+  color: white;
+  padding: 1px 10px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.delete-button {
+    background-color: rgb(177, 5, 5);
+    border: none;
+    color: white;
+    padding: 1px 10px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .modify-button {
+    background-color: rgb(5, 32, 151);
+    color: white;
+    padding: 1px 10px;
+    text-align: center;
+    font-size: 12px;
+    margin-left:10px;
+    cursor: pointer;
+  }
+
+  .start-button {
+    background-color: rgb(28, 110, 3);
+    color: white;
+    padding: 1px 10px;
+    text-align: center;
+    font-size: 12px;
+    margin-left:10px;
+    cursor: pointer;
+  }
+
+  a:hover, a:active {
+    background-color: rgb(1, 22, 90);
+    color: white;
+  }
+
+  .div-container { 
+    height: 170px;
+    position: relative;
+  }
+
+  .div-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }

@@ -18,6 +18,7 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { DeleteComponent } from './pages/delete/delete.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RegisterComponent } from './pages/register/register.component';
     CreateComponent,
     DeleteComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
