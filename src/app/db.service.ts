@@ -85,7 +85,7 @@ export class DbService {
 
   createMatch(tournament: Tournament) {
     console.log('Add Match ...')
-    const url = this.boltUrl + 'match/create/first';
+    const url = this.boltUrl + 'match/create/first'+tournament._id;
 
     this.http.post(url, tournament).subscribe(responseDate => {
       console.log(responseDate)
