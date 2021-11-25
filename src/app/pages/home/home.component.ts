@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     let playerName : any | undefined;
     playerName = t.playersList;
     for (let i = 0; i < playerName.length; i++) {
-      if (playerName[i].name =="")
+      if (playerName[i].name =="" || playerName.length < 8)
         {this.router.navigate(['/update/', t._id])
         break;}
       else {
