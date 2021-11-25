@@ -8,7 +8,7 @@ import { HeaderComponent } from './partials/header/header.component';
 import { UpdateComponent } from './pages/update/update.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { BasePageComponent } from './partials/base-page/base-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CreateComponent } from './pages/create/create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -18,6 +18,8 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { DeleteComponent } from './pages/delete/delete.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LandingComponent } from './pages/landing/landing.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { RegisterComponent } from './pages/register/register.component';
     CreateComponent,
     DeleteComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,13 @@ import { RegisterComponent } from './pages/register/register.component';
     MatNativeDateModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

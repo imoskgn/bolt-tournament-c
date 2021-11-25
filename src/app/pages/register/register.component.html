@@ -1,6 +1,6 @@
 <div role="document" class="modal-dialog">
     <div class="modal-content">
-        <form>
+        <form (ngSubmit)="submit()">
             <div>
                 <div class="modal-content">
                     <div class="modal-header">
@@ -11,23 +11,23 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="name" ngModel name="name">
+                            <input type="text" class="form-control" id="name" [(ngModel)]="registrationForm.name" name="name">
                         </div>
                         <div class="mb-3">
                             <label for="mobileNumber" class="col-form-label">Mobile Number:</label>
-                            <input type="number" class="form-control" id="mobileNumber" ngModel name="mobileNumber">
+                            <input type="number" class="form-control" id="mobileNumber" [(ngModel)]="registrationForm.phoneNumber" name="mobileNumber">
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" ngModel name="email">
-                        </div>
+                            <input type="email" class="form-control" id="email" [(ngModel)]="loginForm.email" name="email">
+                        </div> -->
                         <div class="mb-3">
                             <label class="col-form-label">Password:</label>
-                            <input type="password" class="form-control" id="password" ngModel name="password">
+                            <input type="password" class="form-control" id="password" [(ngModel)]="registrationForm.password" name="password">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn signup-button" routerLink="/home" routeLinkActive="active">Sign up</button>
+                        <button type="submit" class="btn signup-button">Sign up</button>
                         <a>Already have an account?</a>
                         <button type="button" class="btn btn-primary" routerLink="/login" routeLinkActive="active">Sign in here</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" routerLink="/home"

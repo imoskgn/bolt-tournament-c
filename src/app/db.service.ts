@@ -100,4 +100,40 @@ export class DbService {
       return of(result as T);
     };
   }
+
+  userLogin(payload: any) {
+    const url = this.boltUrl + 'user/login';
+
+    this.http.post(url,payload).subscribe(
+      (res:any) => {
+        if(res.accessToken){
+          console.log(res);
+          localStorage.setItem('jwt',res.accessToken);
+          alert("Login Successful");
+        }
+      }
+    );
+  }
+
+  userRegistration(payload: any) {
+    const url = this.boltUrl + 'user/create';
+
+    this.http.post(url,payload).subscribe(
+      (res:any) => {
+        if(res.accessToken){
+          console.log(res);
+          localStorage.setItem('jwt',res.accessToken);
+          alert("User Registered");
+        }
+      }
+    );
+  }
+
+/*   getLoggedInUser(auth_token): Observable<any> {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+    return this.http.get(url, { headers: headers })
+  } */
 }
