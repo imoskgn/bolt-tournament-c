@@ -71,6 +71,16 @@ export class UpdateComponent implements OnInit {
     this.tournaments[0].endDate = data.value.endDate;
 
     let playerList: Player[] = [];
+
+    for(let i=0 ; i<= 8 ;i++){
+      playerList.push({
+        phoneNumber : data.value.player1Phone,
+        name : data.value.player1Name
+      })
+    }
+ 
+
+
     playerList[0].phoneNumber = data.value.player1Phone;
     playerList[0].name = data.value.player1Name;
 
