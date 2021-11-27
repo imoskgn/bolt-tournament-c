@@ -4,7 +4,7 @@ export class User {
         public phoneNumber: {
             type: string,
             trim: true,
-            require: "phone number is require",
+            require: "phone number is required",
             unique: true
         },
         public registered: boolean,

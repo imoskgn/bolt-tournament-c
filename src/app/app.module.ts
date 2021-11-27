@@ -20,6 +20,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { ForumeComponent } from './pages/forume/forume.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AuthInterceptor } from './auth.interceptor';
     DeleteComponent,
     LoginComponent,
     RegisterComponent,
-    LandingComponent
+    LandingComponent,
+    ForumeComponent
   ],
   imports: [
     BrowserModule,
