@@ -67,7 +67,7 @@ export class DbService {
     console.log('Deleting Tournament ...')
     const url = this.boltUrl + 'tournament/delete/'+id1;
 
-    this.http.get(url).subscribe(responseDate => {
+    this.http.delete(url).subscribe(responseDate => {
       console.log(responseDate)
     })
   }
