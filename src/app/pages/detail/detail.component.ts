@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Match } from 'src/app/model/match';
 
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -17,8 +18,8 @@ export class DetailComponent implements OnInit {
   lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
+  constructor(private router:ActivatedRoute, private dbService: DbService, private route:Router) { }
   @ViewChild('btnradio11P1') myDiv: ElementRef | undefined;
-  constructor(private router:ActivatedRoute, private dbService: DbService) { }
 
   ngOnInit(): void {
     this.getTournamentById();
@@ -55,5 +56,18 @@ export class DetailComponent implements OnInit {
       console.log('Undefined id');
     }
     
+  startTournament( t : Tournament): void{ 
+    let playerName : any | undefined;
+    playerName = t.playersList;
+    for (let i = 0; i < playerName.length; i++) {
+      if (playerName[i].name =="" || playerName.length<8)
+        {this.route.navigate(['/update/', t._id])
+        break;}
+      else {
+        t.status = "started";
+        this.dbService.updtTournament(t);
+        this.dbService.createMatch(t);
+      }
+    } 
   }
 }

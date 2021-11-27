@@ -71,32 +71,31 @@ export class UpdateComponent implements OnInit {
     this.tournaments[0].endDate = data.value.endDate;
 
     let playerList: Player[] = [];
-    playerList[0].phone = data.value.player1Phone;
+    playerList[0].phoneNumber = data.value.player1Phone;
     playerList[0].name = data.value.player1Name;
 
-    playerList[1].phone = data.value.player2Phone;
+    playerList[1].phoneNumber = data.value.player2Phone;
     playerList[1].name = data.value.player2Name;
 
-    playerList[2].phone = data.value.player3Phone;
+    playerList[2].phoneNumber = data.value.player3Phone;
     playerList[2].name = data.value.player3Name;
 
-    playerList[3].phone = data.value.player4Phone;
+    playerList[3].phoneNumber = data.value.player4Phone;
     playerList[3].name = data.value.player4Name;
     
-    playerList[4].phone = data.value.player5Phone;
+    playerList[4].phoneNumber = data.value.player5Phone;
     playerList[4].name = data.value.player5Name;
     
-    playerList[5].phone = data.value.player6Phone;
+    playerList[5].phoneNumber = data.value.player6Phone;
     playerList[5].name = data.value.player6Name;
     
-    playerList[6].phone = data.value.player7Phone;
+    playerList[6].phoneNumber = data.value.player7Phone;
     playerList[6].name = data.value.player7Name;
     
-    playerList[8].phone = data.value.player8Phone;
+    playerList[8].phoneNumber = data.value.player8Phone;
     playerList[8].name = data.value.player8Name;
 
     this.tournaments[0].playersList = playerList;
-    this.tournaments[0].currentPlayersList = playerList;
     
     console.log(this.tournaments[0]);
     this.dbService.updtTournament(this.tournaments[0]);

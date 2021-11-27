@@ -4,13 +4,13 @@ import { DbService } from 'src/app/db.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-landing',
+  templateUrl: './landing.component.html',
+  styleUrls: ['./landing.component.css']
 })
-export class HomeComponent implements OnInit {
+export class LandingComponent implements OnInit {
+
   tournaments: Tournament[]=[];
   title: string | undefined;
   constructor(private dbService: DbService, private route: ActivatedRoute, private router: Router) { }
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     let playerName : any | undefined;
     playerName = t.playersList;
     for (let i = 0; i < playerName.length; i++) {
-      if (playerName[i].name =="" || playerName.length < 8)
+      if (playerName[i].name =="")
         {this.router.navigate(['/update/', t._id])
         break;}
       else {

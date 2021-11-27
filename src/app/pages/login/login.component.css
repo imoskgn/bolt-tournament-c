@@ -1,0 +1,31 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.signup-button {
+    background-color: #d36702;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+
+.forgot-password-button {
+    background-color: #00a179;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+
+.close-model-button {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
