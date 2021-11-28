@@ -63,7 +63,35 @@ export class DetailComponent implements OnInit {
     else
       return true;
   }
+  winnerPlayer(match : Match, player : number){
+    
+    if(player==1){
+      if(match.firstPlayer
+         && match.winner
+         && match.firstPlayer.phoneNumber==match.winner.phoneNumber){           
+        console.log("WINNER: "+match.firstPlayer.phoneNumber);
+        return true;
+      }
+    }
+    if(player==2){
+      if(match.secondPlayer 
+        && match.winner
+        && match.secondPlayer.phoneNumber==match.winner.phoneNumber){
+          console.log("WINNER: "+match.secondPlayer.phoneNumber);
+        return true;
+      }
+    }
+    return false;
+  }
+  updateWinner(match : Match, lvl : number, ord : number, player : number){
+    let newLevel =  lvl + 1;
+    let newOrder= Math.ceil(ord/2);
+    let newPlayer = (ord % 2) == 0? 2: 1;
+    console.log("newLevel: "+newLevel);
+    console.log("newOrder: "+newOrder);
+    console.log("newPlayer: "+newPlayer);
 
+  }
 
   getTournamentLevel() {
     console.log("Matches review");
