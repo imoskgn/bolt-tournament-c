@@ -27,7 +27,8 @@
                         Players</a>
                 </li>
                 <li class="nav-item">
-                    <button routerLink="/login" routeLinkActive="active" type="submit" class="login-button btn">Log in</button><br>
+                    <button routerLink="/login" routeLinkActive="active" type="button" *ngIf="!authenticated" class="login-button btn">Log in</button><br>
+                    <button routerLink="/home" routeLinkActive="active" type="button" *ngIf="authenticated" (click)="logout()" class="login-button btn">Log out</button><br>
                 </li>
             </ul>
         </div>

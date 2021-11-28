@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { DbService } from 'src/app/db.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private dbService: DbService,
+    private authService: AuthService,
     private router: ActivatedRoute,
     private route: Router
   ) { }
@@ -24,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submit():void{
-    this.dbService.userRegistration(this.registrationForm);
+    this.authService.userRegistration(this.registrationForm);
     this.route.navigate(['/login']);
   }
 }
