@@ -26,27 +26,27 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTournament();
-    this.checkEditable();
-    if(this.tournaments[0].status == 'created'){
-      this.editable = true;
-    }
-    else{
-      this.editable = false;
-    }
+    // this.checkEditable();
+    // if(this.tournaments[0].status == 'created'){
+    //   this.editable = true;
+    // }
+    // else{
+    //   this.editable = false;
+    // }
     console.log(this.tournament);
     this.tournament = this.tournaments[0];
   }
 
-  checkEditable():void{
-    console.log('Inside check')
-    console.log(this.tournaments.length)
-    if(this.tournaments[0].status=='created'){
-      this.editable = true;
-    }
-    else{
-      this.editable = false;
-    }
-  }
+  // checkEditable():void{
+  //   console.log('Inside check')
+  //   console.log(this.tournaments.length)
+  //   if(this.tournaments[0].status=='created'){
+  //     this.editable = true;
+  //   }
+  //   else{
+  //     this.editable = false;
+  //   }
+  // }
 
   getTournament(): void {
     this.routeSub = this.router.params.subscribe((params) => {
@@ -71,6 +71,16 @@ export class UpdateComponent implements OnInit {
     this.tournaments[0].endDate = data.value.endDate;
 
     let playerList: Player[] = [];
+
+    for(let i=0 ; i<= 8 ;i++){
+      playerList.push({
+        phoneNumber : data.value.player1Phone,
+        name : data.value.player1Name
+      })
+    }
+ 
+
+
     playerList[0].phoneNumber = data.value.player1Phone;
     playerList[0].name = data.value.player1Name;
 
