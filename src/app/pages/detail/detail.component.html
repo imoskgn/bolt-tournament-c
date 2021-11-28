@@ -66,9 +66,12 @@
                     <div class="row">
                         <div class="col">
                             <h1>Single-elimination Tournament </h1>
-                            <h2>Round of 2	Final</h2>
-                            <h2>Round of 4	Semifinals</h2>
-                            <h2>Round of 8	Quarterfinals</h2>
+                            
+                            <h2  *ngIf="level">{{level==1? "Quarterfinals Round": ""}}
+                                {{level==2? "Semifinal Round": ""}}
+                                {{level==3? "Final Round": ""}}
+                            </h2>
+                           
                             <!-- For Owners: *ngIf="Owner" -->
                             <button 
                             (click)="loadWinnersEditing();"
@@ -92,7 +95,7 @@
                                         id="btnradio{{ match.level }}{{ match.order }}P1" autocomplete="off"
                                         >
     
-                                        <label class="btn btn-outline-warning" 
+                                        <label class="btn btn-outline-warning"  
                                         for="btnradio{{ match.level }}{{ match.order }}P1">
                                         <i class="fas fa-user"></i>
                                         {{ match.firstPlayer ? match.firstPlayer.name : "" }}</label>
@@ -113,7 +116,7 @@
                                 <div class="col-3" *ngIf="lastMatch">
                                     <button type="button" 
                                     class="btn btn-warning py-2 w-100">
-                                    <i class="fas fa-user"></i>{{ lastMatch.winner.name }}</button>
+                                    <i class="fas fa-user"></i>{{ lastMatch.winner!==undefined?lastMatch.winner.name:"" }}</button>
                                 </div>
                             </div>    
                         </div>
@@ -128,7 +131,7 @@
                                 *ngFor="let match of level">
                                     <!-- Player 1  -->    
                                     <button 
-                                     type="button" class="btn btn-{{ match.firstPlayer.name===match.winner.name ? 'warning' : 'dark' }}">
+                                     type="button" class="btn btn-dark">
                                         <i class="fas fa-user"></i> {{ match.firstPlayer ? match.firstPlayer.name : "" }}
                                     </button>
                                     
@@ -144,7 +147,7 @@
                             <div class="col-3" *ngIf="lastMatch">
                                 <button type="button" 
                                 class="btn btn-warning py-2 w-100">
-                                <i class="fas fa-user"></i>{{ lastMatch.winner.name }}</button>
+                                <i class="fas fa-user"></i>{{ lastMatch.winner!==undefined?lastMatch.winner.name:"" }}</button>
                             </div>
                         </div>
                     </ng-template>

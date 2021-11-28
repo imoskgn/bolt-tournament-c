@@ -14,16 +14,19 @@ import { Match } from 'src/app/model/match';
 export class DetailComponent implements OnInit {
   tournament: Tournament | undefined;
   matches: [] = [];
+  m: Match[][] = [];
+  level : number=1;
   winnersEditing: boolean=false;
   lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
   constructor(private router:ActivatedRoute, private dbService: DbService, private route:Router) { }
-  @ViewChild('btnradio11P1') myDiv: ElementRef | undefined;
+  
 
   ngOnInit(): void {
     this.getTournamentById();
     this.getMatchesByTournamentId();
+    
   }
 
   getTournamentById():void{
@@ -41,20 +44,58 @@ export class DetailComponent implements OnInit {
     this.dbService.getMatchesByTournamentId(this.tournamentId).subscribe(matches => {
       this.matches = matches
       this.lastMatch = matches[matches.length - 1][0];
-
+      
+      
+      this.getTournamentLevel();
     })
   }
 
   loadWinnersEditing() {
     this.winnersEditing = true;
   }
-  ngAfterViewInit() {
-    if(this.myDiv){
+
+  closeWinnersEditing() {
+    this.winnersEditing = false;
+  }
+  public equalThanLevel(mLvl : number){
+    if(mLvl<this.level || mLvl>this.level)
+      return false;
+    else
+      return true;
+  }
+
+
+  getTournamentLevel() {
+    console.log("Matches review");
+    console.log("Matches levels length: "+this.matches.length);
+    this.m=[];
+    for( let i=0 ; i < this.matches.length;i++){
+      let matchlevel : Match[] = this.matches[i];
+      this.m[i]=[];
+      let lvlCount=matchlevel.length;
+      console.log("Matches length: "+matchlevel.length);
+      for( let j=0 ; j < matchlevel.length;j++){ 
+        if(matchlevel[j].level! && matchlevel[j].order!){
+          this.m[i][j]=matchlevel[j];
+          console.log("Match["+(i)+"]["+(j)+"]"+this.m[i][j].level +"-"+this.m[i][j].order);
+          if(this.m[i][j].firstPlayer && this.m[i][j].secondPlayer){
+            lvlCount=lvlCount-1;
+            console.log("lvlCount: "+lvlCount);
+            if(lvlCount==0){              
+              this.level = this.m[i][j].level!;              
+              console.log("  Level: "+this.level);
+            }
+            if(this.level==3 && this.m[i][j].winner){
+              this.level=4;
+            }
+          } 
+
+        }
+      }
       
-      console.log(this.myDiv.nativeElement.innerHTML);
-    }else{
-      console.log('Undefined id');
     }
+  }
+  
     
   startTournament( t : Tournament): void{ 
     let playerName : any | undefined;

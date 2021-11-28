@@ -13,8 +13,8 @@ export class Match {
       phoneNumber: String
     },
     public _id?: string,
-    public level?: Number,
-    public order?: Number,
+    public level?: number,
+    public order?: number,
     public acive?: boolean,
     public tournamentId?: String,
   ) {}
