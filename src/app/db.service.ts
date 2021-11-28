@@ -7,6 +7,7 @@ import { Match } from './model/match';
 import { TournamentCreate } from './model/tournament_create';
 import { Post_create } from './model/post_create';
 import { Post } from './model/post';
+import { MatchWinner } from './model/match_winner';
 
 
 @Injectable({ providedIn: 'root' })
@@ -171,4 +172,25 @@ export class DbService {
     })
     return this.http.get(url, { headers: headers })
   } */
+
+  // POST: Update Match from Tournament
+  updateWinner(match: MatchWinner, id : string) {
+    console.log(`Updating Match: ${ id }`)
+    const url = this.boltUrl + 'match/update/'+id;
+
+    this.http.post(url, match).pipe(tap(_ => console.log(`updated match id = ${ id }`)),
+    catchError(this.handleError<any>('updateMatch'))).subscribe(responseDate => {
+      console.log(responseDate)
+    })
+  }
+  // POST: Update Match from Tournament
+  updateMatch(match: MatchWinner, id : string|undefined) {
+    console.log(`Updating Match Tournament: ${ id }`)
+    const url = this.boltUrl + 'match/update-match/'+id;
+
+    this.http.post(url, match).pipe(tap(_ => console.log(`updated match Tournament id = ${ id }`)),
+    catchError(this.handleError<any>('updateMatchTournament'))).subscribe(responseDate => {
+      console.log(responseDate)
+    })
+  }
 }

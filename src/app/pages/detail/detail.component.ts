@@ -4,6 +4,8 @@ import { DbService } from 'src/app/db.service';
 import { ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Match } from 'src/app/model/match';
+import { MatchWinner } from 'src/app/model/match_winner';
+import { Player } from 'src/app/model/player';
 
 
 @Component({
@@ -12,7 +14,8 @@ import { Match } from 'src/app/model/match';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  tournament: Tournament | undefined;
+  tournament: Tournament = new Tournament();
+
   matches: [] = [];
   m: Match[][] = [];
   level : number=1;
@@ -20,6 +23,7 @@ export class DetailComponent implements OnInit {
   lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
+
   constructor(private router:ActivatedRoute, private dbService: DbService, private route:Router) { }
   
 
@@ -90,8 +94,42 @@ export class DetailComponent implements OnInit {
     console.log("newLevel: "+newLevel);
     console.log("newOrder: "+newOrder);
     console.log("newPlayer: "+newPlayer);
+    
+    let winner = new  MatchWinner();
+    winner.level=lvl;
+    winner.order=ord;
+    
+    let matchUpdate = new  MatchWinner();
+    matchUpdate.level=newLevel;
+    matchUpdate.order=newOrder;
+    if(player==1){
+      winner.winner=match.firstPlayer      
+      if(newPlayer==1){
+        matchUpdate.firstPlayer=match.firstPlayer;    
+        matchUpdate.secondPlayer = this.m[newLevel-1][newOrder-1].secondPlayer;
+      }
+      if(newPlayer==2){
+        matchUpdate.secondPlayer=match.firstPlayer;
+        matchUpdate.firstPlayer = this.m[newLevel-1][newOrder-1].firstPlayer;
+      }
+    }
+    if(player==2){
+      winner.winner=match.secondPlayer     
+      if(newPlayer==1){
+        matchUpdate.firstPlayer=match.secondPlayer;
+        matchUpdate.secondPlayer = this.m[newLevel-1][newOrder-1].secondPlayer;
+      }
+      if(newPlayer==2){
+        matchUpdate.secondPlayer=match.secondPlayer;
+        matchUpdate.firstPlayer = this.m[newLevel-1][newOrder-1].firstPlayer;
+      }
+    }
 
-  }
+    this.dbService.updateWinner(winner,match._id!);
+    this.dbService.updateMatch(matchUpdate,this.tournament._id);
+    this.ngOnInit();
+  }  
+  
 
   getTournamentLevel() {
     console.log("Matches review");

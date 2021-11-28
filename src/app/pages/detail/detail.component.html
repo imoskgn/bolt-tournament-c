@@ -95,43 +95,51 @@
                                         name="btnradio{{ match.level }}{{ match.order }}" 
                                         id="btnradio{{ match.level }}{{ match.order }}P1" autocomplete="off"
                                         (click)="updateWinner(match, match.level, match.order, 1)">
-                                        <label class="btn btn-outline-dark"
+                                        
+                                        <label class="btn btn-warning" *ngIf="winnerPlayer(match,1)==true"
                                             for="btnradio{{ match.level }}{{ match.order }}P1">
                                             <i class="fas fa-user"></i>
-                                            {{ match.firstPlayer ? match.firstPlayer.name : "" }} - 
-                                            {{ match.firstPlayer.phoneNumber ? match.firstPlayer.phoneNumber : "" }}</label>
+                                            {{ match.firstPlayer ? match.firstPlayer.name : "" }} </label>
+                                        <label class="btn btn-dark" *ngIf="winnerPlayer(match,1)==false"
+                                            for="btnradio{{ match.level }}{{ match.order }}P1">
+                                            <i class="fas fa-user"></i>
+                                            {{ match.firstPlayer ? match.firstPlayer.name : "" }} </label>
                                         <!-- Player 2  -->
                                         <input type="radio" class="btn-check" 
                                         name="btnradio{{ match.level }}{{ match.order }}" 
-                                        id="btnradio{{ match.level }}{{ match.order }}P2" autocomplete="off">
+                                        id="btnradio{{ match.level }}{{ match.order }}P2" autocomplete="off"
+                                        (click)="updateWinner(match, match.level, match.order, 2)">
                                             
-                                        <label class="btn btn-outline-dark"
+                                        <label class="btn btn-warning" *ngIf="winnerPlayer(match,2)==true"
                                         for="btnradio{{ match.level }}{{ match.order }}P2">
                                         <i class="fas fa-user"></i>
-                                            {{ match.secondPlayer ? match.secondPlayer.name : ""}} - 
-                                            {{ match.secondPlayer.phoneNumber ? match.secondPlayer.phoneNumber : "" }}</label>
-    
+                                            {{ match.secondPlayer ? match.secondPlayer.name : ""}}</label>
+                                        <label class="btn btn-dark" *ngIf="winnerPlayer(match,2)==false"
+                                            for="btnradio{{ match.level }}{{ match.order }}P2">
+                                            <i class="fas fa-user"></i>
+                                                {{ match.secondPlayer ? match.secondPlayer.name : ""}}</label>
+        
                                     </div>
                                     <div class="btn-group btn-group-vertical py-2 w-100"
                                     role="group" aria-label="Basic"
                                     *ngIf="equalThanLevel(match.level)==false">
                                          <!-- Player 1  -->    
                                         <button *ngIf="winnerPlayer(match,1)==true"
-                                        type="button" class="btn btn-warning">
+                                        type="button" class="btn btn-outline-warning">
                                         <i class="fas fa-user"></i> {{ match.firstPlayer ? match.firstPlayer.name : "" }}
                                         </button>  
                                         <button *ngIf="winnerPlayer(match,1)==false"
-                                            type="button" class="btn btn-dark">
+                                            type="button" class="btn btn-outline-dark">
                                             <i class="fas fa-user"></i> {{ match.firstPlayer ? match.firstPlayer.name : "" }}
                                         </button>
                                         
                                         <!-- Player 2  -->                                       
                                         <button *ngIf="winnerPlayer(match,2)==true"
-                                        type="button" class="btn btn-warning">
+                                        type="button" class="btn btn-outline-warning">
                                             <i class="fas fa-user"></i> {{ match.secondPlayer ? match.secondPlayer.name : "" }}
                                         </button>                                       
                                         <button *ngIf="winnerPlayer(match,2)==false"
-                                        type="button" class="btn btn-dark">
+                                        type="button" class="btn btn-outline-dark">
                                             <i class="fas fa-user"></i> {{ match.secondPlayer ? match.secondPlayer.name : "" }}
                                         </button>                                     
                                         
