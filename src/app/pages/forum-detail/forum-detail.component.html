@@ -1,0 +1,70 @@
+<p>forum-detail works!</p>
+
+
+
+
+<h1 *ngIf="post">Forum / {{post.title}} </h1>
+
+<div class="col-10" *ngIf="post">
+    <h1>Post: {{post.title}}</h1>
+    <p>{{post.text}}</p>
+    <p>{{post.date | date:'medium' }} </p>
+    <p>{{post.authorName}}</p>
+    
+    
+
+
+</div>
+
+
+<div  *ngIf="post" ><a class="btn btn-info" href="/forum-create/{{postId}}">New Post </a></div>
+
+
+<div><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+</div>
+
+
+<div>Subject: Game start !</div>
+<div>Lester</div>
+<div>2021/10/09 12:00</div> 
+
+
+
+
+
+<!-- Pop -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="inpSubject" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">Topic</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Content</label>
+                        <textarea for="inpMsg" id="inpMsg" class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

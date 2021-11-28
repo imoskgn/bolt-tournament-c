@@ -1,0 +1,62 @@
+
+
+
+
+
+
+<div >
+
+    <div class="forum-topic-panel mw-100">
+        <table class="table table-dark w-100" id='tab'>
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of posts;">
+                    <td>{{ p.date | date:'short' }}</td>
+                    <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
+                    <td>{{ p.authorName }}</td>
+                </tr>
+                <tr *ngFor="let p of posts;">
+                    <td>{{ p.date | date:'short' }}</td>
+                    <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
+                    <td>{{ p.authorName }}</td>
+                </tr>
+                <tr *ngFor="let p of posts;">
+                    <td>{{ p.date | date:'short' }}</td>
+                    <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
+                    <td>{{ p.authorName }}</td>
+                </tr>
+                <tr *ngFor="let p of posts;">
+                    <td>{{ p.date | date:'short' }}</td>
+                    <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
+                    <td>{{ p.authorName }}</td>
+                </tr>
+                <tr *ngFor="let p of posts;">
+                    <td>{{ p.date | date:'short' }}</td>
+                    <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
+                    <td>{{ p.authorName }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<form #createP="ngForm" (ngSubmit)="onSubmit(createP)">
+    <div class="form-group">
+      <label for="inputsm">Title:</label><input class="form-control input-sm" id="inputsm" type="text">
+    </div>
+     <div class="form-group">
+      <label for="inputdefault">Content:</label>
+      <textarea class="form-control" id="inputdefault"></textarea>
+    </div>
+    <div class="form-group">
+        <button class="form-control btn btn-info" type="submit">Post</button>
+    </div>
+</form>
+
