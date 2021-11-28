@@ -22,11 +22,11 @@ export class AuthService {
 
     this.http.post(url,payload).subscribe(
       (res:any) => {
-        if(res.accessToken){
+        //if(res.accessToken){
           console.log(res);
           localStorage.setItem('jwt',res.accessToken);
           alert("Login Successful");
-        }
+       // }
       }
     );
   }
