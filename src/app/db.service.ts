@@ -5,6 +5,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Tournament } from './model/tournament';
 import { Match } from './model/match';
 import { TournamentCreate } from './model/tournament_create';
+import { Post_create } from './model/post_create';
+import { Post } from './model/post';
 
 
 @Injectable({ providedIn: 'root' })
@@ -128,6 +130,39 @@ export class DbService {
       }
     );
   }
+
+  getPosts(): Observable<Post[]> {
+    const url = this.boltUrl + 'forum/post/';
+    return this.http.get<Post[]>(url, this.requestOptions)
+      .pipe(
+        tap(_ => console.log('fetched posts')),
+        catchError(this.handleError<Post[]>('getPosts', []))
+      );
+  }
+
+
+
+  /** GET Tournament by id. Will 404 if id not found */
+  getPostById(id1: string): Observable<Post> {
+    // const url = `${this.boltUrl}forum/post/${id1}`;
+    const url = this.boltUrl + 'post/' + id1;
+    return this.http.get<Post>(url)
+      .pipe(
+        tap(_ => console.log(`fetched Post id=${id1}`)),
+        catchError(this.handleError<Post>(`getPost id=${id1}`))
+      );
+  }
+
+    //   /** POST: add a new Tournament to the server */
+    createPost(post: Post_create) {
+      console.log('Add Post ...')
+      const url = this.boltUrl + 'forum/post/create';
+  
+      this.http.post(url, post).subscribe(responseDate => {
+        console.log(responseDate)
+      })
+    }
+    
 
 /*   getLoggedInUser(auth_token): Observable<any> {
     const headers = new Headers({

@@ -20,7 +20,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { AuthInterceptor } from './auth.interceptor';
-import { ForumeComponent } from './pages/forume/forume.component';
+import { ForumCreateComponent } from './pages/forum-create/forum-create.component';
+import { ForumMainComponent } from './pages/forum-main/forum-main.component';
+import { ForumDetailComponent } from './pages/forum-detail/forum-detail.component';
+
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { ForumeComponent } from './pages/forume/forume.component';
     LoginComponent,
     RegisterComponent,
     LandingComponent,
-    ForumeComponent
+    ForumMainComponent,
+    ForumCreateComponent,
+    ForumDetailComponent
   ],
   imports: [
     BrowserModule,
