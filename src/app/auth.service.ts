@@ -19,7 +19,8 @@ export class AuthService {
   //User login function
   userLogin(payload: any) {
     const url = this.boltUrl + 'user/login';
-
+    console.log("Inside userLogin Method of AuthService");
+    
     this.http.post(url,payload).subscribe(
       (res:any) => {
         //if(res.accessToken){
