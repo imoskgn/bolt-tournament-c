@@ -176,5 +176,6 @@ export class DetailComponent implements OnInit {
         this.dbService.createMatch(t);
       }
     } 
+    this.ngOnInit();
   }
 }
