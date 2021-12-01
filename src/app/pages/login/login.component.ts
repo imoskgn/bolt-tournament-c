@@ -28,8 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   submit():void{
+    console.log("Inside Submit Method of login");
     this.authService.userLogin(this.loginForm);
-    this.route.navigate(['/landing']).then.call(window.location.reload());
+   // this.route.navigate(['/landing']).then.call(window.location.reload());
   }
 }
 

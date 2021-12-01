@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -14,18 +15,20 @@ export class AuthService {
     headers: new HttpHeaders(this.headerDict),
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: Router) { }
 
   //User login function
   userLogin(payload: any) {
     const url = this.boltUrl + 'user/login';
-
+    console.log("Inside userLogin Method of AuthService");
+    
     this.http.post(url,payload).subscribe(
       (res:any) => {
         //if(res.accessToken){
           console.log(res);
           localStorage.setItem('jwt',res.accessToken);
           alert("Login Successful");
+          this.route.navigate(['/landing']).then.call(window.location.reload());
        // }
       }
     );
