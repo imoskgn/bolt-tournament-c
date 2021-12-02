@@ -80,12 +80,12 @@ table {
     color: white;
   }
 
-  .div-container { 
+  .div-containerannyper { 
     height: 170px;
     position: relative;
   }
 
-  .div-center {
+  .div-centerannyper {
     margin: 0;
     position: absolute;
     top: 50%;

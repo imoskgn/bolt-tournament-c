@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="boltlogo.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg154"
+   version="1.1"
+   viewBox="0 0 184.15 88.9"
+   height="3.5in"
+   width="7.25in">
+  <defs
+     id="defs148">
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.3880847,-25.454449,-167.9034)"
+       r="18.549833"
+       fy="148.54465"
+       fx="87.879448"
+       cy="148.54465"
+       cx="87.879448"
+       id="radialGradient1051"
+       xlink:href="#linearGradient1043"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient1043"
+       inkscape:collect="always">
+      <stop
+         id="stop1039"
+         offset="0"
+         style="stop-color:#f2d949;stop-opacity:1;" />
+      <stop
+         id="stop1041"
+         offset="1"
+         style="stop-color:#f2d949;stop-opacity:0;" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="-7"
+     inkscape:window-height="696"
+     inkscape:window-width="750"
+     height="9.5in"
+     units="in"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="146.33678"
+     inkscape:cx="367.14662"
+     inkscape:zoom="0.7"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata151">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Capa 1">
+    <text
+       id="text849"
+       y="50.423439"
+       x="23.788675"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5778px;line-height:1.25;font-family:'College Football Sans';-inkscape-font-specification:'College Football Sans';display:inline;fill:#3b3a40;fill-opacity:1;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5778px;font-family:'College Football Sans';-inkscape-font-specification:'College Football Sans';fill:#3b3a40;fill-opacity:1;stroke-width:0.264583"
+         y="50.423439"
+         x="23.788675"
+         id="tspan847"
+         sodipodi:role="line">Bol</tspan></text>
+    <path
+       style="display:inline;fill:#3b3a40;fill-opacity:1;stroke:#000000;stroke-width:0.11828;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 39.964501,36.674304 32.634671,-25.85145 -0.057,10.092 -6.412802,3.73522 -7.112108,15.53569 22.651058,-15.96921 -0.029,9.33031 -8.833882,5.46845 -14.540709,31.90301 7.827359,-28.01635 -16.13244,8.63452 6.29348,-22.18022 z"
+       id="path887-4"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       sodipodi:nodetypes="ccccccccccccc"
+       id="path887-4-1"
+       d="m 43.875131,34.356714 28.023181,-21.81631 -0.0789,7.71184 -6.42892,3.67062 -7.892229,18.49729 23.415561,-16.61591 0.061,7.1357 -8.824601,5.11977 -11.28146,25.97817 6.965612,-23.48893 -16.578112,9.32008 6.4702,-22.31499 z"
+       style="display:inline;fill:#ebb940;fill-opacity:1;stroke:none;stroke-width:2.20568;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <path
+       style="display:inline;fill:url(#radialGradient1051);fill-opacity:1;stroke:none;stroke-width:2.20568;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 43.875161,34.356714 28.02318,-21.81631 -0.0789,7.71184 -6.428909,3.67062 -7.892233,18.49729 23.415562,-16.61591 0.061,7.1357 -8.8246,5.11977 -11.28146,25.97817 6.965611,-23.48893 -16.578111,9.32008 6.4702,-22.31499 z"
+       id="path887-4-1-74"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5778px;line-height:1.25;font-family:'College Football Sans';-inkscape-font-specification:'College Football Sans';display:inline;fill:#3b3a40;fill-opacity:1;stroke-width:0.264583"
+       x="68.084625"
+       y="62.146248"
+       id="text849-7"
+       inkscape:transform-center-x="0.75595238"
+       inkscape:transform-center-y="-1.889881"><tspan
+         sodipodi:role="line"
+         id="tspan847-8"
+         x="68.084625"
+         y="62.146248"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5778px;font-family:'College Football Sans';-inkscape-font-specification:'College Football Sans';fill:#3b3a40;fill-opacity:1;stroke-width:0.264583">ournament</tspan></text>
+  </g>
+</svg>

@@ -1,15 +1,15 @@
 <!-- Main Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark br-primary" style="background-color: rgb(66, 60, 60);">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"></a>
 
         <a class="navbar-brand" href="/" >
-            <img src="/assets/images/logo.svg" alt="" width="25%" height="25%">
-            <b class="display-5">Bolt</b><span class=""> Tournaments</span>
+            <img src="/assets/images/boltlogoinv.svg" alt="" height="58">
           </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,13 +22,13 @@
                     <a class="nav-link" aria-current="page" routerLink="/forum"><i class="fas fa-calendar-alt"></i>
                         Forum</a>
                 </li>
+               
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/update"><i class="fas fa-users"></i>
-                        Players</a>
-                </li>
-                <li class="nav-item">
-                    <button routerLink="/login" routeLinkActive="active" type="button" *ngIf="!authenticated" class="login-button btn">Log in</button><br>
-                    <button routerLink="/home" routeLinkActive="active" type="button" *ngIf="authenticated" (click)="logout()" class="login-button btn">Log out</button><br>
+                    <button routerLink="/login" routeLinkActive="active" type="button" 
+                    *ngIf="!authenticated" class="btn btn-dark aqua-button">Log in</button>
+                    
+                    <button routerLink="/home" routeLinkActive="active" type="button" 
+                    *ngIf="authenticated" (click)="logout()" class="btn btn-dark aqua-button">Log out</button>
                 </li>
             </ul>
         </div>

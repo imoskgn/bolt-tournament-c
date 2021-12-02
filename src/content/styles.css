@@ -1,4 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+/**
+ * File name: src/content/styles.css   
+ * Student’s Name: Anamaria Pereira Barbosa
+ * StudentID: 301177133
+ * Date: 01/12/2021 
+ */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.aqua-button{
+    background-color: #0b8a79;
+}
+.aqua-button:hover{
+    background-color: #006668;
+}
+body {  
+    background-color: #6C6F74;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+.container-fluid.bolt-bg1{
+    padding: 10px 30px 70px 30px
+}
+
+
+.white-div {
+    background: #fff;
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+.bolt-bg1 {
+    background-image: url("/assets/images/hand_bg.svg");
+    background-size: 300px;
+    background-repeat: no-repeat; 
+}
+.sqr-bg2 {
+    background-image: url("/assets/images/sqr-bg2.png");
+    background-size: cover;
+    background-repeat: no-repeat; 
+}
+  
