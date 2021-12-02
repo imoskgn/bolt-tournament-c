@@ -1,7 +1,7 @@
 
 <div class="container-fluid bolt-bg1">
     <div class="row py-4 justify-content-md-center">
-        <h1>Tournaments</h1>
+        <h1 class="text-center">Tournaments</h1>
         <div class="col-md-auto col-12">
             <button routerLink="/create" routeLinkActive="active" type="submit"
             class="btn btn-dark aqua-dark-button">
@@ -24,8 +24,10 @@
                 
               </div>
             <div class="card-footer">
-                <a href="/detail/{{ e._id }}" class="btn btn-primary m-2">View Details</a>
-                <a class="btn btn-success mx-2" (click)='startTournament(e)'
+                <a class="aqua-button btn btn-dark m-2" href="/detail/{{ e._id }}" >
+                    <i class="fas fa-external-link-square-alt"></i> View Details
+                </a>
+                <a class="aqua-dark-button btn btn-dark mx-2" (click)='startTournament(e)'
                 *ngIf= '!(e.status== "started")'>
                     <i class="fas fa-play-circle"></i> Start
                 </a> 
