@@ -65,10 +65,10 @@ export class UpdateComponent implements OnInit {
 
   onSubmit(data: NgForm) {
     let _id: string = this.tournamentId;
-    this.tournaments[0].name = data.value.tournamentName;
-    this.tournaments[0].description = data.value.tournamentDesc;
-    this.tournaments[0].startDate = data.value.startDate;
-    this.tournaments[0].endDate = data.value.endDate;
+    this.tournaments[0].name = data.value.tournamentName != null ? data.value.tournamentName : this.tournaments[0].name;
+    this.tournaments[0].description = data.value.tournamentDesc != null ? data.value.tournamentDesc : this.tournaments[0].description ;
+    this.tournaments[0].startDate = data.value.startDate != null ? data.value.startDate : this.tournaments[0].startDate ;
+    this.tournaments[0].endDate = data.value.endDate != null ? data.value.endDate : this.tournaments[0].endDate;
 
     let playerList: Player[] = [];
 
@@ -105,7 +105,7 @@ export class UpdateComponent implements OnInit {
     playerList[8].phoneNumber = data.value.player8Phone;
     playerList[8].name = data.value.player8Name;
 
-    this.tournaments[0].playersList = playerList;
+    this.tournaments[0].playersList = playerList.length > 0 ? playerList : this.tournaments[0].playersList;
     
     console.log(this.tournaments[0]);
     this.dbService.updtTournament(this.tournaments[0]);
