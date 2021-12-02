@@ -11,6 +11,14 @@
 .aqua-button:hover{
     background-color: #006668;
 }
+
+.aqua-dark-button{
+    background-color: #006668;
+}
+.aqua-dark-button:hover{
+    background-color: #004849;
+}
+
 body {  
     background-color: #6C6F74;
     font-family: Roboto, "Helvetica Neue", sans-serif; 
@@ -30,12 +38,18 @@ body {
     border-top-right-radius: .25rem;
 }
 .bolt-bg1 {
-    background-image: url("/assets/images/hand_bg.svg");
-    background-size: 300px;
-    background-repeat: no-repeat; 
+    background-image:   url("/assets/images/hand_bg.svg"),url("/assets/images/coliseum-5.svg"),
+                        url("/assets/images/shade12.svg");
+    background-position:    left top, right bottom,
+                            right bottom;
+    background-repeat:  no-repeat, no-repeat,
+                        no-repeat; 
+    background-size:    300px,400px,
+                        300px;
 }
-.sqr-bg2 {
-    background-image: url("/assets/images/sqr-bg2.png");
+.bolt-bg2 {
+    background-image: url("/assets/images/shade10.svg");
+    background-position:    center top;
     background-size: cover;
     background-repeat: no-repeat; 
 }
