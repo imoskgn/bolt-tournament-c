@@ -37,10 +37,21 @@ body {
     background-size:    cover;
 }
 .bolt-bg3 {
-    background-image:   url("/assets/images/coliseum-5.svg");
-    background-position:    left bottom;
+    background-image:   url("/assets/images/coliseum-5.svg"),url("/assets/images/shade8.svg"),
+                        url("/assets/images/hand_bg-5.svg");
+    background-position:    right bottom, left bottom,
+                            left top;
+    background-repeat:  no-repeat,no-repeat,
+                        no-repeat; 
+    background-size:    300px,140px,
+                        300px;
+}
+.bolt-start{
+    background-image:   url("/assets/images/crown1.svg");
+    background-position:    center bottom;
     background-repeat:  no-repeat; 
-    background-size:    cover;
+    background-size:    contain;    
+    padding: 1.5rem;
 }
 .bolt-container{
     margin-top: 100px;
