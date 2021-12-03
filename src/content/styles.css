@@ -4,38 +4,21 @@
  * StudentID: 301177133
  * Date: 01/12/2021 
  */
-
 .aqua-button{
     background-color: #0b8a79;
 }
 .aqua-button:hover{
     background-color: #006668;
 }
-
 .aqua-dark-button{
     background-color: #006668;
 }
 .aqua-dark-button:hover{
     background-color: #004849;
 }
-
 body {  
     background-color: #6C6F74;
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-}
-.container-fluid.bolt-bg1{
-    padding: 10px 30px 70px 30px
-}
-
-
-.white-div {
-    background: #fff;
-    padding: 1.5rem;
-    margin-right: 0;
-    margin-left: 0;
-    border-width: 1px;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
 }
 .bolt-bg1 {
     background-image:   url("/assets/images/hand_bg.svg"),url("/assets/images/coliseum-5.svg"),
@@ -48,9 +31,34 @@ body {
                         300px;
 }
 .bolt-bg2 {
-    background-image: url("/assets/images/shade10.svg");
+    background-image:   url("/assets/images/shade10.svg");
     background-position:    center top;
-    background-size: cover;
-    background-repeat: no-repeat; 
+    background-repeat:  no-repeat; 
+    background-size:    cover;
+}
+.bolt-bg3 {
+    background-image:   url("/assets/images/coliseum-5.svg");
+    background-position:    left bottom;
+    background-repeat:  no-repeat; 
+    background-size:    cover;
+}
+.bolt-container{
+    margin-top: 100px;
+    padding: 10px 30px 70px 30px
+}
+.card{
+    padding: 0;
+}
+.card-footer{
+    padding: 0;
+}
+.white-div {
+    background: #fff;
+    border-width: 1px;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 1.5rem;
 }
   
