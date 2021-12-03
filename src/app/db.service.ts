@@ -8,6 +8,7 @@ import { TournamentCreate } from './model/tournament_create';
 import { Post_create } from './model/post_create';
 import { Post } from './model/post';
 import { MatchWinner } from './model/match_winner';
+import { User } from './model/user';
 
 
 @Injectable({ providedIn: 'root' })
@@ -25,6 +26,8 @@ export class DbService {
 
   constructor(private http: HttpClient) { }
 
+
+  //****************** Tournaments ****************************
   /** GET Tournaments from the server */
   getTournaments(): Observable<Tournament[]> {
     const url = this.boltUrl + 'tournament/';
@@ -56,7 +59,6 @@ export class DbService {
   }
   
  
-  //   /** POST: add a new Tournament to the server */
   addTournament(tournament: TournamentCreate) {
     console.log('Add Tournament ...')
     const url = this.boltUrl + 'tournament/create';
@@ -86,6 +88,8 @@ export class DbService {
     })
   }
 
+
+  //****************** Matches ****************************
   createMatch(tournament: Tournament) {
     console.log('Add Match ...')
     const url = this.boltUrl + 'match/create/first/'+tournament._id;
@@ -95,15 +99,27 @@ export class DbService {
     })
   }
 
-  // Error Handling mechanism, TBI
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.log('${operation} failed: ${error.message}');
-      return of(result as T);
-    };
+  updateWinner(match: MatchWinner, id : string) {
+    console.log(`Updating Match: ${ id }`)
+    const url = this.boltUrl + 'match/update/'+id;
+
+    this.http.post(url, match).pipe(tap(_ => console.log(`updated match id = ${ id }`)),
+    catchError(this.handleError<any>('updateMatch'))).subscribe(responseDate => {
+      console.log(responseDate)
+    })
+  }
+  // POST: Update Match from Tournament
+  updateMatch(match: MatchWinner, id : string|undefined) {
+    console.log(`Updating Match Tournament: ${ id }`)
+    const url = this.boltUrl + 'match/update-match/'+id;
+
+    this.http.post(url, match).pipe(tap(_ => console.log(`updated match Tournament id = ${ id }`)),
+    catchError(this.handleError<any>('updateMatchTournament'))).subscribe(responseDate => {
+      console.log(responseDate)
+    })
   }
 
+  //****************** User ****************************
   userLogin(payload: any) {
     const url = this.boltUrl + 'user/login';
 
@@ -132,6 +148,8 @@ export class DbService {
     );
   }
 
+
+  //****************** Forum ****************************
   getPosts(): Observable<Post[]> {
     const url = this.boltUrl + 'forum/post/';
     return this.http.get<Post[]>(url, this.requestOptions)
@@ -173,24 +191,16 @@ export class DbService {
     return this.http.get(url, { headers: headers })
   } */
 
-  // POST: Update Match from Tournament
-  updateWinner(match: MatchWinner, id : string) {
-    console.log(`Updating Match: ${ id }`)
-    const url = this.boltUrl + 'match/update/'+id;
 
-    this.http.post(url, match).pipe(tap(_ => console.log(`updated match id = ${ id }`)),
-    catchError(this.handleError<any>('updateMatch'))).subscribe(responseDate => {
-      console.log(responseDate)
-    })
-  }
-  // POST: Update Match from Tournament
-  updateMatch(match: MatchWinner, id : string|undefined) {
-    console.log(`Updating Match Tournament: ${ id }`)
-    const url = this.boltUrl + 'match/update-match/'+id;
+  
 
-    this.http.post(url, match).pipe(tap(_ => console.log(`updated match Tournament id = ${ id }`)),
-    catchError(this.handleError<any>('updateMatchTournament'))).subscribe(responseDate => {
-      console.log(responseDate)
-    })
+
+  // Error Handling mechanism, TBI
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log('${operation} failed: ${error.message}');
+      return of(result as T);
+    };
   }
 }
