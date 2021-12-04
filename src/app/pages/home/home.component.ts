@@ -26,8 +26,20 @@ export class HomeComponent implements OnInit {
   }
 
   startTournament( t : Tournament): void{     
-    this.dbService.createMatch(t).subscribe( any => {
-      this.ngOnInit();
-    });
+    let playerName : any | undefined;
+    playerName = t.playersList;
+    for (let i = 0; i < playerName.length; i++) {
+      if (playerName[i].name =="" || playerName.length < 8)
+        {this.router.navigate(['/update/', t._id])
+        break;}
+      else 
+      {
+        t.status = "started";
+        this.dbService.updtTournament(t);
+        this.dbService.createMatch(t).subscribe( any => {
+          this.ngOnInit();
+        });
+      }
+    }
   }
 }
