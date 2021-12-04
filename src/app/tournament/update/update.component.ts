@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Tournament } from 'src/app/model/tournament';
 import { Player } from 'src/app/model/player';
 import { DbService } from 'src/app/db.service';

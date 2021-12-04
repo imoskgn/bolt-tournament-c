@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DbService } from 'src/app/db.service';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -17,20 +16,19 @@ export class LoginComponent implements OnInit {
   };
   
   constructor(
-    private dbService: DbService,
     private authService: AuthService,
     private router: ActivatedRoute,
     private route: Router
     ) { }
 
   ngOnInit(): void { 
-    
+    console.log("On Init")
   }
 
   submit():void{
     console.log("Inside Submit Method of login");
     this.authService.userLogin(this.loginForm);
-   // this.route.navigate(['/']).then.call(window.location.reload());
+    this.route.navigate(['/home']);
   }
 }
 

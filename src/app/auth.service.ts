@@ -28,7 +28,6 @@ export class AuthService {
           console.log(res);
           localStorage.setItem('jwt',res.accessToken);
           alert("Login Successful");
-          this.route.navigate(['/']).then.call(window.location.reload());
        // }
       }
     );
