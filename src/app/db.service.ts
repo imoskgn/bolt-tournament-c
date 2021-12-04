@@ -113,33 +113,9 @@ export class DbService {
   }
 
   //****************** User ****************************
-  userLogin(payload: any) {
-    const url = this.boltUrl + 'user/login';
+  
 
-    this.http.post(url,payload).subscribe(
-      (res:any) => {
-        if(res.accessToken){
-          console.log(res);
-          localStorage.setItem('jwt',res.accessToken);
-          alert("Login Successful");
-        }
-      }
-    );
-  }
-
-  userRegistration(payload: any) {
-    const url = this.boltUrl + 'user/create';
-
-    this.http.post(url,payload).subscribe(
-      (res:any) => {
-        if(res.accessToken){
-          console.log(res);
-          localStorage.setItem('jwt',res.accessToken);
-          alert("User Registered");
-        }
-      }
-    );
-  }
+  
 
 
   //****************** Forum ****************************
