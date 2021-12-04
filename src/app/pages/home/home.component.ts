@@ -3,6 +3,7 @@ import { Tournament } from 'src/app/model/tournament';
 import { DbService } from 'src/app/db.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/user';
 
 
 @Component({
@@ -13,17 +14,21 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   tournaments: Tournament[]=[];
   title: string | undefined;
+  users: User[] | undefined;
+  loggedUser: User | undefined;
   constructor(private dbService: DbService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getTournaments();
     this.title = this.route.snapshot.data.title;
+    this.loggedUser = JSON.parse(localStorage.getItem('user') || '');
   }
 
   getTournaments():void{
     this.dbService.getTournaments().subscribe(tournaments => this.tournaments = tournaments)
     console.log(this.tournaments)
   }
+
 
   startTournament( t : Tournament): void{     
     let playerName : any | undefined;
@@ -34,9 +39,7 @@ export class HomeComponent implements OnInit {
         break;}
       else 
       {
-        this.dbService.createMatch(t).subscribe( any => {
-          this.ngOnInit();
-        });
+        this.dbService.createMatch(t)
       }
     }
   }
