@@ -178,9 +178,17 @@ export class DetailComponent implements OnInit {
   }
   
     
-  startTournament(): void{ 
-    this.dbService.createMatch(this.tournament).subscribe( any => {
-      this.ngOnInit();
-    });    
+  startTournament( t : Tournament): void{     
+    let playerName : any | undefined;
+    playerName = t.playersList;
+    for (let i = 0; i < playerName.length; i++) {
+      if (playerName[i].name =="" || playerName.length < 8)
+        {this.router.navigate(['/update/', t._id])
+        break;}
+      else 
+      {
+        this.dbService.createMatch(t)
+      }
+    }
   }
 }

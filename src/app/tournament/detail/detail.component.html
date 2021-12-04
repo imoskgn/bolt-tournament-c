@@ -3,12 +3,10 @@
     <div class="row py-4 align-items-center">
         <div class="col-md-5 col-12 ">
             <div class="col-12" *ngIf="tournament">
-
                 <div *ngIf="tournament.status== 'started'">
                     <h1>Final Results</h1>
                     <p class="fs-4">1.</p>
                     <p class="fs-4">2.</p>
-                    <p class="fs-4">3.</p>
                 </div>
                 <div class="bolt-start  align-items-center text-center" *ngIf='!(tournament.status== "started")'>
                     <h3 class="w-40 m-auto text-black">Let the</h3>
