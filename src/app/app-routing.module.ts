@@ -7,7 +7,6 @@ import { CreateComponent } from './tournament/create/create.component';
 import { DeleteComponent } from './tournament/delete/delete.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { LandingComponent } from './pages/landing/landing.component';
 import { ForumMainComponent } from './forum/forum-main/forum-main.component';
 import { ForumCreateComponent } from './forum/forum-create/forum-create.component';
 import { ForumDetailComponent } from './forum/forum-detail/forum-detail.component';
@@ -22,7 +21,6 @@ const routes: Routes = [
   {path:'delete/:id',component:DeleteComponent, data:{title:'Delete'}},
   {path:'login',component:LoginComponent, data:{title:'Login'}},
   {path:'register',component:RegisterComponent, data:{title:'Register'}},
-  {path:'landing',component:LandingComponent, data:{title:'Landing'}},
   {path:'forum',component:ForumMainComponent, data:{title:'Forum'}},
   {path:'forum-create/:id',component:ForumCreateComponent, data:{title:'Create msg'}},
   {path:'forum-detail/:id',component:ForumDetailComponent, data:{title:'Forum Detail'}},

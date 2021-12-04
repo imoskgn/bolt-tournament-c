@@ -18,7 +18,6 @@ import { DetailComponent } from './tournament/detail/detail.component';
 import { DeleteComponent } from './tournament/delete/delete.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { LandingComponent } from './pages/landing/landing.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { ForumCreateComponent } from './forum/forum-create/forum-create.component';
 import { ForumMainComponent } from './forum/forum-main/forum-main.component';
@@ -40,7 +39,6 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
     DeleteComponent,
     LoginComponent,
     RegisterComponent,
-    LandingComponent,
     ForumMainComponent,
     ForumCreateComponent,
     ForumDetailComponent,
