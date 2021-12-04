@@ -11,6 +11,7 @@ export class Tournament {
         public startDate?: Date,
         public endDate?: Date,
         public level?: Number,
+        public userPhone?:Number,
     ) {}
   }
   
