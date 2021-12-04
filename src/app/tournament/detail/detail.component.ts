@@ -183,7 +183,7 @@ export class DetailComponent implements OnInit {
     playerName = t.playersList;
     for (let i = 0; i < playerName.length; i++) {
       if (playerName[i].name =="" || playerName.length < 8)
-        {this.router.navigate(['/update/', t._id])
+        {this.route.navigate(['/update/', t._id])
         break;}
       else 
       {
