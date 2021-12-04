@@ -33,7 +33,6 @@ export class DetailComponent implements OnInit {
     this.getTournamentById();
     this.getMatchesByTournamentId();    
     this.loggedUser = JSON.parse(localStorage.getItem('user') || '');
-    
   }
 
   getTournamentById():void{

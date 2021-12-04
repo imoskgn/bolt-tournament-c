@@ -13,19 +13,19 @@
 </div>
 
 
-<div  *ngIf="post" ><a class="btn btn-info" href="/forum-create/{{postId}}">New Post </a></div>
+<div *ngIf="post"><a class="btn btn-info" href="/forum-create/{{postId}}">New Post </a></div>
 
 
 <div><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+        Launch demo modal
+    </button>
 </div>
 
-
-<div>Subject: Game start !</div>
-<div>Lester</div>
-<div>2021/10/09 12:00</div> 
-
+<div *ngIf="post">
+    <div>Subject: {{ post.title }}</div>
+    <div>Lester</div>
+    <div>2021/10/09 12:00</div>
+</div>
 
 
 
@@ -59,8 +59,3 @@
     </div>
 
 </div>
-
-
-
-
-

@@ -58,31 +58,31 @@ export class DbService {
       );
   }
 
- 
+
 
   deleteTournament(id1: string): Observable<any> {
     console.log('Deleting Tournament ...')
-    const url = this.boltUrl + 'tournament/delete/'+id1;
+    const url = this.boltUrl + 'tournament/delete/' + id1;
 
     return this.http.delete(url);
   }
 
   // POST: Update existing Tournament
   updtTournament(tournament: Tournament) {
-    console.log(`Updating Tournament: ${ tournament._id }`)
-    const url = this.boltUrl + 'tournament/update/'+tournament._id;
+    console.log(`Updating Tournament: ${tournament._id}`)
+    const url = this.boltUrl + 'tournament/update/' + tournament._id;
 
-    this.http.post(url, tournament).pipe(tap(_ => console.log(`updated Tournament id = ${ tournament._id }`)),
-    catchError(this.handleError<any>('updateTournament'))).subscribe(responseDate => {
-      console.log(responseDate)
-    })
+    this.http.post(url, tournament).pipe(tap(_ => console.log(`updated Tournament id = ${tournament._id}`)),
+      catchError(this.handleError<any>('updateTournament'))).subscribe(responseDate => {
+        console.log(responseDate)
+      })
   }
 
 
   //****************** Matches ****************************
   createMatch(tournament: Tournament): Observable<any> {
     console.log('Add Match ...')
-    const url = this.boltUrl + 'match/create/first/'+tournament._id;
+    const url = this.boltUrl + 'match/create/first/' + tournament._id;
 
     return this.http.post(url, tournament);
   }
@@ -96,21 +96,21 @@ export class DbService {
     );
   }
 
-  updateWinner(match: MatchWinner, id : string): Observable<any> {
-    console.log(`Updating Match: ${ id }`)
-    const url = this.boltUrl + 'match/update/'+id;
+  updateWinner(match: MatchWinner, id: string): Observable<any> {
+    console.log(`Updating Match: ${id}`)
+    const url = this.boltUrl + 'match/update/' + id;
 
-    return this.http.post(url, match).pipe(tap(_ => console.log(`updated match id = ${ id }`)),
-    catchError(this.handleError<any>('updateMatch')));
-    
+    return this.http.post(url, match).pipe(tap(_ => console.log(`updated match id = ${id}`)),
+      catchError(this.handleError<any>('updateMatch')));
+
   }
   // POST: Update Match from Tournament
-  updateMatch(match: MatchWinner, id : string|undefined): Observable<any>{
-    console.log(`Updating Match Tournament: ${ id }`)
-    const url = this.boltUrl + 'match/update-match/'+id;
+  updateMatch(match: MatchWinner, id: string | undefined): Observable<any> {
+    console.log(`Updating Match Tournament: ${id}`)
+    const url = this.boltUrl + 'match/update-match/' + id;
 
-    return this.http.post(url, match).pipe(tap(_ => console.log(`updated match Tournament id = ${ id }`)),
-    catchError(this.handleError<any>('updateMatchTournament')));
+    return this.http.post(url, match).pipe(tap(_ => console.log(`updated match Tournament id = ${id}`)),
+      catchError(this.handleError<any>('updateMatchTournament')));
   }
 
   //****************** Forum ****************************
@@ -125,35 +125,36 @@ export class DbService {
 
 
 
-  
+
   getPostById(id1: string): Observable<Post> {
     // const url = `${this.boltUrl}forum/post/${id1}`;
-    const url = this.boltUrl + 'post/' + id1;
+    const url = this.boltUrl + 'forum/post/' + id1;
     return this.http.get<Post>(url)
       .pipe(
         tap(_ => console.log(`fetched Post id=${id1}`)),
-        catchError(this.handleError<Post>(`getPost id=${id1}`))
+        catchError(this.handleError<Post>(`getPostById id=${id1}`))
       );
   }
 
-    
-    createPost(post: PostCreate) {
-      console.log('Add Post ...')
-      const url = this.boltUrl + 'forum/post/create';
   
-      this.http.post(url, post).subscribe(responseDate => {
-        console.log(responseDate)
-      })
-    }
-    
 
-/*   getLoggedInUser(auth_token): Observable<any> {
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${auth_token}`
+  createPost(post: PostCreate) {
+    console.log('Add Post ...')
+    const url = this.boltUrl + 'forum/post/create';
+
+    this.http.post(url, post).subscribe(responseDate => {
+      console.log(responseDate)
     })
-    return this.http.get(url, { headers: headers })
-  } */
+  }
+
+
+  /*   getLoggedInUser(auth_token): Observable<any> {
+      const headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      })
+      return this.http.get(url, { headers: headers })
+    } */
 
 
   // Error Handling mechanism, TBI
