@@ -26,27 +26,9 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTournament();
-    // this.checkEditable();
-    // if(this.tournaments[0].status == 'created'){
-    //   this.editable = true;
-    // }
-    // else{
-    //   this.editable = false;
-    // }
     console.log(this.tournament);
     this.tournament = this.tournaments[0];
   }
-
-  // checkEditable():void{
-  //   console.log('Inside check')
-  //   console.log(this.tournaments.length)
-  //   if(this.tournaments[0].status=='created'){
-  //     this.editable = true;
-  //   }
-  //   else{
-  //     this.editable = false;
-  //   }
-  // }
 
   getTournament(): void {
     this.routeSub = this.router.params.subscribe((params) => {
