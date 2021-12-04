@@ -105,11 +105,11 @@
                             </h2>
                            
                             <!-- For Owners: *ngIf="Owner" -->
-                            <button *ngIf="!winnersEditing && loggedUser==tournament.userId"
+                            <button *ngIf="!winnersEditing "
                             (click)="loadWinnersEditing();"
                             class="btn-warning btn div-center">Select match winners</button>
                             
-                            <button *ngIf="winnersEditing && loggedUser==tournament.userId"
+                            <button *ngIf="winnersEditing "
                             (click)="closeWinnersEditing();"
                             class="btn-secondary btn div-center">Close</button>
                             
