@@ -166,7 +166,7 @@ export class DbService {
   }
 
     //   /** POST: add a new Tournament to the server */
-    createPost(post: Post_create) {
+    createPost(post: Post) {
       console.log('Add Post ...')
       const url = this.boltUrl + 'forum/post/create';
   

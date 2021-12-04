@@ -40,9 +40,11 @@ export class ForumMainComponent implements OnInit {
 
     //let newP: Post = new Post('',data.value.title,data.value.content,'','',new Date())
 
-    let newP: Post_create = new Post_create(data.value.title, data.value.content)
-
+    let newP= new Post();
+    newP.title= data.value.title;
+    newP.text= data.value.content;
     this.dbService.createPost(newP);
+    console.log(newP);
 
     //this.router.navigate(['/forum']);
 
