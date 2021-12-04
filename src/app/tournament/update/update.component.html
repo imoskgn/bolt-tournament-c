@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title" id="createTournamentLabel">Update Tournament</h1>
-                        <h2>Owned by: {{ loggedUser ? loggedUser.phoneNumber : "Not logged in"}}</h2>
+                        <h2>Owned by: {{ tournaments[0] ? tournaments[0].userPhone : "User Not found"}}</h2>
                     </div>
                     <div class="modal-body" *ngIf="tournaments[0]">
                         <div class="col-12 mb-3">
