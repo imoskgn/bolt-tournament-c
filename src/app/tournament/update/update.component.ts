@@ -87,8 +87,8 @@ export class UpdateComponent implements OnInit {
     playerList[6].phoneNumber = data.value.player7Phone;
     playerList[6].name = data.value.player7Name;
     
-    playerList[8].phoneNumber = data.value.player8Phone;
-    playerList[8].name = data.value.player8Name;
+    playerList[7].phoneNumber = data.value.player8Phone;
+    playerList[7].name = data.value.player8Name;
 
     this.tournaments[0].playersList = playerList.length > 0 ? playerList : this.tournaments[0].playersList;
     
