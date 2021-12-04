@@ -3,23 +3,25 @@
         <div class="col-md-10 col-12 bg-light p-3 rounded-3 m-3">
             <form #createP="ngForm" (ngSubmit)="onSubmit(createP)">
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <h1 class="modal-title" id="ForumLabel">Forum</h1>
                     </div>
-                    <div class="modal-body">
-                        <label for="title">Title:</label>
-                        <input class="form-control input-sm" id="title"
-                            type="text">
 
-                        <label for="content">Content:</label>
-                        <textarea class="form-control" id="content"></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-dark aqua-dark-button my-3" type="submit">Post</button>
+                    <div class="modal-body">
+                        <div class="col-12 mb-3">
+                            <label for="postTitle" class="col-form-label">Title</label>
+                            <input type="text" class="form-control" id="postTitle" ngModel name="postTitle" required>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="postContent" class="col-form-label">Content</label>
+                            <textarea class="form-control" id="postContent" ngModel name="postContent"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-dark aqua-dark-button my-3" type="submit">Post</button>
+                        </div>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div>
@@ -41,26 +43,8 @@
                         <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
                         <td>{{ p.authorName }}</td>
                     </tr>
-                    <tr *ngFor="let p of posts;">
-                        <td>{{ p.date | date:'short' }}</td>
-                        <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
-                        <td>{{ p.authorName }}</td>
-                    </tr>
-                    <tr *ngFor="let p of posts;">
-                        <td>{{ p.date | date:'short' }}</td>
-                        <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
-                        <td>{{ p.authorName }}</td>
-                    </tr>
-                    <tr *ngFor="let p of posts;">
-                        <td>{{ p.date | date:'short' }}</td>
-                        <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
-                        <td>{{ p.authorName }}</td>
-                    </tr>
-                    <tr *ngFor="let p of posts;">
-                        <td>{{ p.date | date:'short' }}</td>
-                        <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
-                        <td>{{ p.authorName }}</td>
-                    </tr>
+                   
+                    
                 </tbody>
             </table>
         </div>

@@ -34,8 +34,6 @@ export class HomeComponent implements OnInit {
         break;}
       else 
       {
-        t.status = "started";
-        this.dbService.updtTournament(t);
         this.dbService.createMatch(t).subscribe( any => {
           this.ngOnInit();
         });

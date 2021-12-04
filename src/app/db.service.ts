@@ -5,7 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Tournament } from './model/tournament';
 import { Match } from './model/match';
 import { TournamentCreate } from './model/tournament_create';
-import { Post_create } from './model/post_create';
+import { PostCreate } from './model/post_create';
 import { Post } from './model/post';
 import { MatchWinner } from './model/match_winner';
 import { User } from './model/user';
@@ -28,6 +28,15 @@ export class DbService {
 
 
   //****************** Tournaments ****************************
+
+  addTournament(tournament: TournamentCreate) {
+    console.log('Add Tournament ...')
+    const url = this.boltUrl + 'tournament/create';
+
+    this.http.post(url, tournament).subscribe(responseDate => {
+      console.log(responseDate)
+    })
+  }
   /** GET Tournaments from the server */
   getTournaments(): Observable<Tournament[]> {
     const url = this.boltUrl + 'tournament/';
@@ -49,24 +58,7 @@ export class DbService {
       );
   }
 
-  getMatchesByTournamentId(id1: string): Observable<[]> {
-    // const url = `${this.boltUrl}tournament/${id1}`;
-    const url = this.boltUrl + 'match/tournament/' + id1;
-    return this.http.get<[]>(url, this.requestOptions).pipe(
-      tap(_ => console.log('fetched matches')),
-      catchError(this.handleError<[]>('getMatchesByTournamentId', []))
-    );
-  }
-  
  
-  addTournament(tournament: TournamentCreate) {
-    console.log('Add Tournament ...')
-    const url = this.boltUrl + 'tournament/create';
-
-    this.http.post(url, tournament).subscribe(responseDate => {
-      console.log(responseDate)
-    })
-  }
 
   deleteTournament(id1: string): Observable<any> {
     console.log('Deleting Tournament ...')
@@ -95,6 +87,15 @@ export class DbService {
     return this.http.post(url, tournament);
   }
 
+  getMatchesByTournamentId(id1: string): Observable<[]> {
+    // const url = `${this.boltUrl}tournament/${id1}`;
+    const url = this.boltUrl + 'match/tournament/' + id1;
+    return this.http.get<[]>(url, this.requestOptions).pipe(
+      tap(_ => console.log('fetched matches')),
+      catchError(this.handleError<[]>('getMatchesByTournamentId', []))
+    );
+  }
+
   updateWinner(match: MatchWinner, id : string): Observable<any> {
     console.log(`Updating Match: ${ id }`)
     const url = this.boltUrl + 'match/update/'+id;
@@ -112,12 +113,6 @@ export class DbService {
     catchError(this.handleError<any>('updateMatchTournament')));
   }
 
-  //****************** User ****************************
-  
-
-  
-
-
   //****************** Forum ****************************
   getPosts(): Observable<Post[]> {
     const url = this.boltUrl + 'forum/post/';
@@ -130,7 +125,7 @@ export class DbService {
 
 
 
-  /** GET Tournament by id. Will 404 if id not found */
+  
   getPostById(id1: string): Observable<Post> {
     // const url = `${this.boltUrl}forum/post/${id1}`;
     const url = this.boltUrl + 'post/' + id1;
@@ -141,8 +136,8 @@ export class DbService {
       );
   }
 
-    //   /** POST: add a new Tournament to the server */
-    createPost(post: Post) {
+    
+    createPost(post: PostCreate) {
       console.log('Add Post ...')
       const url = this.boltUrl + 'forum/post/create';
   
@@ -159,9 +154,6 @@ export class DbService {
     })
     return this.http.get(url, { headers: headers })
   } */
-
-
-  
 
 
   // Error Handling mechanism, TBI
