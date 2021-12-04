@@ -5,6 +5,7 @@ import { Player } from 'src/app/model/player';
 import { DbService } from 'src/app/db.service';
 import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-update',
@@ -17,6 +18,7 @@ export class UpdateComponent implements OnInit {
   private routeSub: Subscription | undefined;
   tournamentId: string = '';
   editable:boolean = false;
+  loggedUser:User | undefined;
 
   constructor(
     private router: ActivatedRoute,
@@ -28,6 +30,7 @@ export class UpdateComponent implements OnInit {
     this.getTournament();
     console.log(this.tournament);
     this.tournament = this.tournaments[0];
+    this.loggedUser = JSON.parse(localStorage.getItem('user') || '');
   }
 
   getTournament(): void {

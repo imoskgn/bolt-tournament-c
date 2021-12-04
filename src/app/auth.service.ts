@@ -4,42 +4,41 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private boltUrl = 'https://bolt-tournament-s.herokuapp.com/';  // URL to web api
+  private boltUrl = 'https://bolt-tournament-s.herokuapp.com/'; // URL to web api
 
   headerDict = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
-  }
+    'Access-Control-Allow-Origin': '*',
+  };
 
   requestOptions = {
     headers: new HttpHeaders(this.headerDict),
   };
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router) {}
 
   //User login function
   userLogin(payload: any) {
     const url = this.boltUrl + 'user/login';
-    console.log("Inside userLogin Method of AuthService");
-    
-    this.http.post(url,payload).subscribe(
-      (res:any) => {
-        //if(res.accessToken){
-          console.log(res);
-          localStorage.setItem('jwt',res.accessToken);
-          alert("Login Successful");
-       // }
+    console.log('Inside userLogin Method of AuthService');
+
+    this.http.post(url, payload).subscribe((res: any) => {
+      if (res.accessToken) {
+        console.log(res.userInfo);
+        localStorage.setItem('jwt', res.accessToken);
+        localStorage.setItem('user', res.userInfo);
+        alert('Login Successful');
       }
-    );
+    });
   }
 
   //User logout function
   userLogout() {
-   localStorage.removeItem('jwt');
+    localStorage.removeItem('jwt');
   }
 
   public isAuthenticated(): boolean {
-    if(localStorage.getItem('jwt')){
+    if (localStorage.getItem('jwt')) {
       return true;
     }
     return false;
@@ -49,14 +48,12 @@ export class AuthService {
   userRegistration(payload: any) {
     const url = this.boltUrl + 'user/create';
 
-    this.http.post(url,payload).subscribe(
-      (res:any) => {
-        if(res.accessToken){
-          console.log(res);
-          localStorage.setItem('jwt',res.accessToken);
-          alert("User Registered");
-        }
+    this.http.post(url, payload).subscribe((res: any) => {
+      if (res.accessToken) {
+        console.log(res);
+        localStorage.setItem('jwt', res.accessToken);
+        alert('User Registered');
       }
-    );
+    });
   }
 }
