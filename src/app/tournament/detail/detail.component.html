@@ -14,7 +14,7 @@
                     <h3 class="w-40 m-auto text-black">Let the</h3>
                     <h3 class="w-40 m-auto text-black">Tournament</h3>
                     <h3 class="w-40 m-auto text-black">begin!</h3>
-                    <a class="btn btn-dark aqua-button m-3" (click)='startTournament(tournament)'>
+                    <a class="btn btn-dark aqua-button m-3" (click)='startTournament()'>
                         Start
                     </a> 
                 </div>
@@ -63,7 +63,7 @@
                     <button class="nav-link active text-black" 
                       id="tabRank" data-bs-toggle="tab"
                       data-bs-target="#dRranks" type="button" role="tab" 
-                      aria-controls="dRranks" aria-selected="true">Home</button>
+                      aria-controls="dRranks" aria-selected="true">Players</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link text-black" 
@@ -83,12 +83,12 @@
                     <table class="table table-dark table-striped table-hover" id='tPlayers'>
                         <thead><tr>
                             <th scope="col" class="px-4">Players</th>
-                            <th scope="col" class="px-4">Matches</th>
+                            <!--th scope="col" class="px-4">Matches</th-->
                         </tr></thead>
                         <tbody>
                             <tr *ngFor="let player of tournament.playersList;">
                                 <td class="px-4">{{player.name}}</td> 
-                                <td class="px-4">--</td>
+                                <!--td class="px-4">--</td-->
                             </tr>
                         </tbody>
                     </table>
@@ -105,9 +105,14 @@
                             </h2>
                            
                             <!-- For Owners: *ngIf="Owner" -->
-                            <button 
+                            <button *ngIf="!winnersEditing && loggedUser==tournament.userId"
                             (click)="loadWinnersEditing();"
                             class="btn-warning btn div-center">Select match winners</button>
+                            
+                            <button *ngIf="winnersEditing && loggedUser==tournament.userId"
+                            (click)="closeWinnersEditing();"
+                            class="btn-secondary btn div-center">Close</button>
+                            
                         </div>
                         
                     </div>

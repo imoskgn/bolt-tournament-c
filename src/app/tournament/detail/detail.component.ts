@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Match } from 'src/app/model/match';
 import { MatchWinner } from 'src/app/model/match_winner';
 import { Player } from 'src/app/model/player';
+import { User } from 'src/app/model/user';
 
 
 @Component({
@@ -23,13 +24,15 @@ export class DetailComponent implements OnInit {
   lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
+  loggedUser:User | undefined;
 
   constructor(private router:ActivatedRoute, private dbService: DbService, private route:Router) { }
   
 
   ngOnInit(): void {
     this.getTournamentById();
-    this.getMatchesByTournamentId();
+    this.getMatchesByTournamentId();    
+    this.loggedUser = JSON.parse(localStorage.getItem('user') || '');
     
   }
 
@@ -98,36 +101,49 @@ export class DetailComponent implements OnInit {
     let winner = new  MatchWinner();
     winner.level=lvl;
     winner.order=ord;
-    
-    let matchUpdate = new  MatchWinner();
-    matchUpdate.level=newLevel;
-    matchUpdate.order=newOrder;
-    if(player==1){
-      winner.winner=match.firstPlayer      
-      if(newPlayer==1){
-        matchUpdate.firstPlayer=match.firstPlayer;    
-        matchUpdate.secondPlayer = this.m[newLevel-1][newOrder-1].secondPlayer;
+    if(lvl<3){      
+      let matchUpdate = new  MatchWinner();
+      matchUpdate.level=newLevel;
+      matchUpdate.order=newOrder;
+      if(player==1){
+        winner.winner=match.firstPlayer      
+        if(newPlayer==1){
+          matchUpdate.firstPlayer=match.firstPlayer;    
+          matchUpdate.secondPlayer = this.m[newLevel-1][newOrder-1].secondPlayer;
+        }
+        if(newPlayer==2){
+          matchUpdate.secondPlayer=match.firstPlayer;
+          matchUpdate.firstPlayer = this.m[newLevel-1][newOrder-1].firstPlayer;
+        }
       }
-      if(newPlayer==2){
-        matchUpdate.secondPlayer=match.firstPlayer;
-        matchUpdate.firstPlayer = this.m[newLevel-1][newOrder-1].firstPlayer;
+      if(player==2){
+        winner.winner=match.secondPlayer     
+        if(newPlayer==1){
+          matchUpdate.firstPlayer=match.secondPlayer;
+          matchUpdate.secondPlayer = this.m[newLevel-1][newOrder-1].secondPlayer;
+        }
+        if(newPlayer==2){
+          matchUpdate.secondPlayer=match.secondPlayer;
+          matchUpdate.firstPlayer = this.m[newLevel-1][newOrder-1].firstPlayer;
+        }
       }
+      this.dbService.updateWinner(winner,match._id!).subscribe( any => {
+        this.dbService.updateMatch(matchUpdate,this.tournament._id).subscribe( any => {
+            this.ngOnInit();
+        });
+      });  
+    }else{
+      if(player==1){
+        winner.winner=match.firstPlayer      
+      }
+      if(player==2){
+        winner.winner=match.secondPlayer     
+      }
+      this.dbService.updateWinner(winner,match._id!).subscribe( any => {
+          this.ngOnInit();     
+      });   
     }
-    if(player==2){
-      winner.winner=match.secondPlayer     
-      if(newPlayer==1){
-        matchUpdate.firstPlayer=match.secondPlayer;
-        matchUpdate.secondPlayer = this.m[newLevel-1][newOrder-1].secondPlayer;
-      }
-      if(newPlayer==2){
-        matchUpdate.secondPlayer=match.secondPlayer;
-        matchUpdate.firstPlayer = this.m[newLevel-1][newOrder-1].firstPlayer;
-      }
-    }
-
-    this.dbService.updateWinner(winner,match._id!);
-    this.dbService.updateMatch(matchUpdate,this.tournament._id);
-    this.ngOnInit();
+     
   }  
   
 
@@ -163,19 +179,9 @@ export class DetailComponent implements OnInit {
   }
   
     
-  startTournament( t : Tournament): void{ 
-    let playerName : any | undefined;
-    playerName = t.playersList;
-    for (let i = 0; i < playerName.length; i++) {
-      if (playerName[i].name =="" || playerName.length<8)
-        {this.route.navigate(['/update/', t._id])
-        break;}
-      else {
-        t.status = "started";
-        this.dbService.updtTournament(t);
-        this.dbService.createMatch(t);
-      }
-    } 
-    this.ngOnInit();
+  startTournament(): void{ 
+    this.dbService.createMatch(this.tournament).subscribe( any => {
+      this.ngOnInit();
+    });    
   }
 }

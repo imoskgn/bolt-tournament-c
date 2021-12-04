@@ -68,13 +68,11 @@ export class DbService {
     })
   }
 
-  deleteTournament(id1: string) {
+  deleteTournament(id1: string): Observable<any> {
     console.log('Deleting Tournament ...')
     const url = this.boltUrl + 'tournament/delete/'+id1;
 
-    this.http.delete(url).subscribe(responseDate => {
-      console.log(responseDate)
-    })
+    return this.http.delete(url);
   }
 
   // POST: Update existing Tournament
@@ -90,33 +88,28 @@ export class DbService {
 
 
   //****************** Matches ****************************
-  createMatch(tournament: Tournament) {
+  createMatch(tournament: Tournament): Observable<any> {
     console.log('Add Match ...')
     const url = this.boltUrl + 'match/create/first/'+tournament._id;
 
-    this.http.post(url, tournament).subscribe(responseDate => {
-      console.log(responseDate)
-    })
+    return this.http.post(url, tournament);
   }
 
-  updateWinner(match: MatchWinner, id : string) {
+  updateWinner(match: MatchWinner, id : string): Observable<any> {
     console.log(`Updating Match: ${ id }`)
     const url = this.boltUrl + 'match/update/'+id;
 
-    this.http.post(url, match).pipe(tap(_ => console.log(`updated match id = ${ id }`)),
-    catchError(this.handleError<any>('updateMatch'))).subscribe(responseDate => {
-      console.log(responseDate)
-    })
+    return this.http.post(url, match).pipe(tap(_ => console.log(`updated match id = ${ id }`)),
+    catchError(this.handleError<any>('updateMatch')));
+    
   }
   // POST: Update Match from Tournament
-  updateMatch(match: MatchWinner, id : string|undefined) {
+  updateMatch(match: MatchWinner, id : string|undefined): Observable<any>{
     console.log(`Updating Match Tournament: ${ id }`)
     const url = this.boltUrl + 'match/update-match/'+id;
 
-    this.http.post(url, match).pipe(tap(_ => console.log(`updated match Tournament id = ${ id }`)),
-    catchError(this.handleError<any>('updateMatchTournament'))).subscribe(responseDate => {
-      console.log(responseDate)
-    })
+    return this.http.post(url, match).pipe(tap(_ => console.log(`updated match Tournament id = ${ id }`)),
+    catchError(this.handleError<any>('updateMatchTournament')));
   }
 
   //****************** User ****************************

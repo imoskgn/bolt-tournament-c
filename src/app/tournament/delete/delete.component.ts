@@ -22,8 +22,9 @@ export class DeleteComponent implements OnInit {
     this.routeSub = this.router.params.subscribe((params) => {
       this.tournamentId = params['id'];
     });
-    this.dbService.deleteTournament(this.tournamentId);
-    this.route.navigate(['/home']);
+    this.dbService.deleteTournament(this.tournamentId).subscribe(any => {      
+      this.route.navigate(['/home']);
+    });
   }
 
 }
