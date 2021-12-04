@@ -40,7 +40,13 @@
                 <tbody>
                     <tr *ngFor="let p of posts;">
                         <td>{{ p.date | date:'short' }}</td>
-                        <td><a class="" href="/forum-detail/{{ p._id }}">{{ p.title }}</a></td>
+                        <td>
+                            <button type="button" class="btn text-light" data-bs-toggle="modal"
+                             data-bs-target="#exampleModal" (click)="showPost(p)">
+                             <u>{{ p.title }}</u>
+                            </button>
+                            
+                        </td>
                         <td>{{ p.authorName }}</td>
                     </tr>
                    
@@ -50,6 +56,26 @@
         </div>
     </div>
 
+<!-- Pop -->
+<div class="modal fade" *ngIf="post" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Post: {{post.title}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{post.text}}</p>
+                    <div id="emailHelp" class="form-text">
+                        <b>Date: </b> {{post.date | date:'medium' }} - <b>Author: </b> {{post.authorName}}
 
+                    </div>              
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
 
 </div>

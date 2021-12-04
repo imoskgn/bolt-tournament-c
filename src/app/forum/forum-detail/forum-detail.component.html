@@ -31,16 +31,18 @@
 
 
 <!-- Pop -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" *ngIf="post" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New post</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Post: {{post.title}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
+                    <p>{{post.text}}</p>
+                    <p>{{post.date | date:'medium' }} </p>
+                    <p>{{post.authorName}}</p>
 
 
                     <div class="mb-3">

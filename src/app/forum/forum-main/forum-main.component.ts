@@ -18,6 +18,7 @@ export class ForumMainComponent implements OnInit {
    
   tournaments: Tournament[]=[];
   posts: Post[]=[];
+  post: Post = new Post();
   title: string | undefined;
   constructor(private dbService: DbService, private route: ActivatedRoute, private router: Router) { }
 
@@ -45,10 +46,16 @@ export class ForumMainComponent implements OnInit {
       postContent
     );
 
-    this.dbService.createPost(newPost);
+    this.dbService.createPost(newPost).subscribe(any=>{
+      this.ngOnInit();
+    });
     this.router.navigate(['/forum']);
 
   }
+  showPost(p: Post ){
+    this.post=p;
+  }
+  
 }
 
 

@@ -138,13 +138,11 @@ export class DbService {
 
   
 
-  createPost(post: PostCreate) {
+  createPost(post: PostCreate): Observable<any> {
     console.log('Add Post ...')
     const url = this.boltUrl + 'forum/post/create';
 
-    this.http.post(url, post).subscribe(responseDate => {
-      console.log(responseDate)
-    })
+    return this.http.post(url, post);
   }
 
 
