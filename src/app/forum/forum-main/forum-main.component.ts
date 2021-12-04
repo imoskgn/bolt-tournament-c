@@ -5,7 +5,7 @@ import { DbService } from 'src/app/db.service';
 import { Tournament } from 'src/app/model/tournament';
 import { Post } from 'src/app/model/post';
 import { NgForm } from '@angular/forms';
-import { Post_create } from 'src/app/model/post_create';
+import { PostCreate } from 'src/app/model/post_create';
 
 
 
@@ -35,24 +35,20 @@ export class ForumMainComponent implements OnInit {
 
 
   onSubmit(data: NgForm) {
-    //alert(data.tournamentName);
     console.log(data);
 
-    //let newP: Post = new Post('',data.value.title,data.value.content,'','',new Date())
+    let postTitle: string = data.value.postTitle;
+    let postContent: string = data.value.postContent;
 
-    let newP= new Post();
-    newP.title= data.value.title;
-    newP.text= data.value.content;
-    this.dbService.createPost(newP);
-    console.log(newP);
+    let newPost: PostCreate = new PostCreate(
+      postTitle,
+      postContent
+    );
 
-    //this.router.navigate(['/forum']);
-
+    this.dbService.createPost(newPost);
+    this.router.navigate(['/forum']);
 
   }
-
-
-
 }
 
 

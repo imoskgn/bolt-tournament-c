@@ -15,7 +15,6 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(data: NgForm) {
-    //alert(data.tournamentName);
     console.log(data);
 
     let tournamentName: string = data.value.tournamentName;
@@ -23,12 +22,7 @@ export class CreateComponent implements OnInit {
     let status: string = 'created';
     let startDate: Date = data.value.startDate;
     let endDate: Date = data.value.endDate;
-    /*  
-    let player1: string = 'phoneNumber: ' +  data.value.player1Phone + ', name: ' + data.value.player1Name;
-    let player2: string = 'phoneNumber: ' +  data.value.player2Phone + ', name: ' + data.value.player2Name;
-    let player3: string = 'phoneNumber: ' +  data.value.player3Phone + ', name: ' + data.value.player3Name;
-    let player4: string = 'phoneNumber: ' +  data.value.player4Phone + ', name: ' + data.value.player4Name;
-*/
+
 
     let player1 = {
       phoneNumber: data.value.pPhone1,
@@ -73,11 +67,6 @@ export class CreateComponent implements OnInit {
 
     let playerList = [player1, player2, player3, player4,player5, player6, player7, player8 ];
 
-    //let playerList: string[] = [player1,player2,player3,player4];
-    //let playerList: string[] =[];
-
-    //let newT:Tournament = new Tournament('',tournamentName, 'defaultUser',tournamentDesc, status, playerList, playerList, startDate, endDate, )
-
     let newT: TournamentCreate = new TournamentCreate(
       tournamentName,
       tournamentDesc,
@@ -90,21 +79,5 @@ export class CreateComponent implements OnInit {
 
     this.router.navigate(['/home']);
 
-    //this.getTournaments();
-
-    /*
-  public _id?: string,
-  public name?: string,
-  public userId?: string,
-  public description?: string,
-  public status?: string,
-  public playersList?: Array<string>,
-  public currentPlayersList?: Array<string>,
-  public startDate?: Date,
-  public endDate?: Date,
-  public level?: Number
-
-  }
-*/
   }
 }
