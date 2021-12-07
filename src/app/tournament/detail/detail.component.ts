@@ -32,7 +32,7 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.getTournamentById();
     this.getMatchesByTournamentId();    
-    this.loggedUser = JSON.parse(localStorage.getItem('user') || '');
+    this.loggedUser = JSON.parse(JSON.stringify(localStorage.getItem('user') || ''));
   }
 
   getTournamentById():void{

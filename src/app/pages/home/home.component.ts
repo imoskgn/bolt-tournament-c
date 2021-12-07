@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getTournaments();
     this.title = this.route.snapshot.data.title;
-    this.loggedUser = JSON.parse(localStorage.getItem('user') || '');
+    console.log(typeof(localStorage.getItem('user')))
+    this.loggedUser = JSON.parse(JSON.stringify(localStorage.getItem('user') || ''));
   }
 
   getTournaments():void{
