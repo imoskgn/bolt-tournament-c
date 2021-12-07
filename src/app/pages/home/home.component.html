@@ -31,11 +31,11 @@
                 *ngIf= '!(e.status== "started")'>
                     <i class="fas fa-play-circle"></i> Start
                 </a> 
-                <a class="btn btn-warning m-2" routerLink="/update/{{ e._id }}"
+                <a class="btn btn-warning m-2" (click)='updateTournament(e)'
                 *ngIf= '!(e.status== "started")'>
                     <i class="fas fa-edit"></i> Modify
                 </a>
-                <a class="btn btn-danger m-2" routerLink="/delete/{{ e._id }}">
+                <a class="btn btn-danger m-2" (click)='deleteTournament(e)'>
                     <i class="fas fa-trash-alt"></i> Delete
                 </a>
               </div>
