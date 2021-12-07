@@ -36,7 +36,12 @@ export class HomeComponent implements OnInit {
       alert("To start a tournament you should be log in. \n Redirecting ....")
       this.router.navigate(['/login'])
       return;
-    } 
+    }
+    if(this.loggedUser?._id != t.userId){
+      alert("You are not the owner of the tournament")
+      this.router.navigate(['/home'])
+      return;
+    }
     let playerName : any | undefined;
     playerName = t.playersList;
     for (let i = 0; i < playerName.length; i++) {
@@ -55,12 +60,22 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login'])
       return;
     }
+    if(this.loggedUser?._id != tournament.userId){
+      alert("You are not the owner of the tournament")
+      this.router.navigate(['/home'])
+      return;
+    }
     this.router.navigate(['/delete/', tournament._id])
   }
   updateTournament( tournament : Tournament): void{     
     if(!localStorage.getItem('jwt')){
       alert("To perform an update you should be log in. \n Redirecting ....")
       this.router.navigate(['/login'])
+      return;
+    }
+    if(this.loggedUser?._id != tournament.userId){
+      alert("You are not the owner of the tournament")
+      this.router.navigate(['/home'])
       return;
     }
     this.router.navigate(['/update/', tournament._id])
