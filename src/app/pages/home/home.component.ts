@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   title: string | undefined;
   users: User[] | undefined;
   loggedUser: User | undefined;
+  jwt: string | null | undefined;
+
   constructor(private dbService: DbService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
     this.title = this.route.snapshot.data.title;
     console.log(typeof(localStorage.getItem('user')))
     this.loggedUser = JSON.parse(JSON.stringify(localStorage.getItem('user') || ''));
+    this.jwt = localStorage.getItem('jwt');
   }
 
   getTournaments():void{
@@ -32,8 +35,8 @@ export class HomeComponent implements OnInit {
 
 
   startTournament( t : Tournament): void{    
-    if(!localStorage.getItem('jwt')){
-      alert("To start a tournament you should be log in. \n Redirecting ....")
+    if(!this.jwt){
+      alert("To start a tournament you should be logged in. \n Redirecting ....")
       this.router.navigate(['/login'])
       return;
     }
@@ -55,8 +58,8 @@ export class HomeComponent implements OnInit {
     }
   }
   deleteTournament( tournament : Tournament): void{     
-    if(!localStorage.getItem('jwt')){
-      alert("To perform a delete you should be log in. \n Redirecting ....")
+    if(!this.jwt){
+      alert("To perform a delete you should be logged in. \n Redirecting ....")
       this.router.navigate(['/login'])
       return;
     }
@@ -68,8 +71,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/delete/', tournament._id])
   }
   updateTournament( tournament : Tournament): void{     
-    if(!localStorage.getItem('jwt')){
-      alert("To perform an update you should be log in. \n Redirecting ....")
+    if(!this.jwt){
+      alert("To perform an update you should be logged in. \n Redirecting ....")
       this.router.navigate(['/login'])
       return;
     }
