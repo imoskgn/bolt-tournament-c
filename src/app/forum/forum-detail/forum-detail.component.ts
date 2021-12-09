@@ -12,30 +12,21 @@ import { Tournament } from 'src/app/model/tournament';
 })
 export class ForumDetailComponent implements OnInit {
   post: Post | undefined;
-  postId:string='';
+  postId: string = '';
 
   private routeSub: Subscription | undefined;
-  constructor(private router:ActivatedRoute, private dbService: DbService, private route:Router) { }
+  constructor(private router: ActivatedRoute, private dbService: DbService, private route: Router) { }
 
   ngOnInit(): void {
     this.getPostById();
-    
+
   }
-  
-  getPostById():void{
+
+  getPostById(): void {
     console.log("getting post by id ...")
     this.routeSub = this.router.params.subscribe(params => {
       this.postId = params['id'];
     });
     this.dbService.getPostById(this.postId).subscribe(post => this.post = post)
-    console.log(this.post)
-  
-
-    
   }
-
-  
-
-
-
 }

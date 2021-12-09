@@ -30,7 +30,7 @@ export class UpdateComponent implements OnInit {
     this.getTournament();
     console.log(this.tournament);
     this.tournament = this.tournaments[0];
-    this.loggedUser = JSON.parse(localStorage.getItem('user') || '');
+    this.loggedUser = JSON.parse(JSON.stringify(localStorage.getItem('user') || ''));
   }
 
   getTournament(): void {

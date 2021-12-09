@@ -13,34 +13,36 @@
 </div>
 
 
-<div  *ngIf="post" ><a class="btn btn-info" href="/forum-create/{{postId}}">New Post </a></div>
+<div *ngIf="post"><a class="btn btn-info" href="/forum-create/{{postId}}">New Post </a></div>
 
 
 <div><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+        Launch demo modal
+    </button>
 </div>
 
-
-<div>Subject: Game start !</div>
-<div>Lester</div>
-<div>2021/10/09 12:00</div> 
-
+<div *ngIf="post">
+    <div>Subject: {{ post.title }}</div>
+    <div>Lester</div>
+    <div>2021/10/09 12:00</div>
+</div>
 
 
 
 
 <!-- Pop -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" *ngIf="post" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New post</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Post: {{post.title}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
+                    <p>{{post.text}}</p>
+                    <p>{{post.date | date:'medium' }} </p>
+                    <p>{{post.authorName}}</p>
 
 
                     <div class="mb-3">
@@ -59,8 +61,3 @@
     </div>
 
 </div>
-
-
-
-
-
