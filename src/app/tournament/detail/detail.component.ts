@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Tournament } from 'src/app/model/tournament';
 import { DbService } from 'src/app/db.service';
-import { ActivatedRoute, ParamMap, Router} from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Match } from 'src/app/model/match';
 import { MatchWinner } from 'src/app/model/match_winner';
-import { Player } from 'src/app/model/player';
 import { User } from 'src/app/model/user';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,14 +25,17 @@ export class DetailComponent implements OnInit {
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
   loggedUser:User | undefined;
+  jwt: string | null | undefined;
 
   constructor(private router:ActivatedRoute, private dbService: DbService, private route:Router) { }
-  
+    
 
   ngOnInit(): void {
     this.getTournamentById();
     this.getMatchesByTournamentId();    
     this.loggedUser = JSON.parse(JSON.stringify(localStorage.getItem('user') || ''));
+    this.loggedUser = JSON.parse(JSON.stringify(localStorage.getItem('user') || ''));
+    this.jwt = localStorage.getItem('jwt');
   }
 
   getTournamentById():void{
@@ -178,7 +181,17 @@ export class DetailComponent implements OnInit {
   }
   
     
-  startTournament( t : Tournament): void{     
+  startTournament( t : Tournament): void{
+    if(!this.jwt){
+      alert("To start a tournament you should be logged in. \n Redirecting ....")
+      this.route.navigate(['/login'])
+      return;
+    }
+    if(this.loggedUser?._id != t.userId){
+      alert("You are not the owner of the tournament")
+      this.route.navigate(['/home'])
+      return;
+    }     
     let playerName : any | undefined;
     playerName = t.playersList;
     for (let i = 0; i < playerName.length; i++) {
@@ -190,5 +203,31 @@ export class DetailComponent implements OnInit {
         this.dbService.createMatch(t)
       }
     }
+  }
+  deleteTournament( tournament : Tournament): void{     
+    if(!this.jwt){
+      alert("To perform a delete you should be logged in. \n Redirecting ....")
+      this.route.navigate(['/login'])
+      return;
+    }
+    if(this.loggedUser?._id != tournament.userId){
+      alert("You are not the owner of the tournament")
+      this.route.navigate(['/home'])
+      return;
+    }
+    this.route.navigate(['/delete/', tournament._id])
+  }
+  updateTournament( tournament : Tournament): void{     
+    if(!this.jwt){
+      alert("To perform an update you should be logged in. \n Redirecting ....")
+      this.route.navigate(['/login'])
+      return;
+    }
+    if(this.loggedUser?._id != tournament.userId){
+      alert("You are not the owner of the tournament")
+      this.route.navigate(['/home'])
+      return;
+    }
+    this.route.navigate(['/update/', tournament._id])
   }
 }

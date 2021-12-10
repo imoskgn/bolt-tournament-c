@@ -32,11 +32,11 @@
 
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-warning m-2" routerLink="/update/{{ tournament._id }}"
+                    <a class="btn btn-warning m-2" (click)='updateTournament(tournament)'
                         *ngIf='!(tournament.status== "started")'>
                         <i class="fas fa-edit"></i> Modify
                     </a>
-                    <a class="btn btn-danger m-2" routerLink="/delete/{{ tournament._id }}">
+                    <a class="btn btn-danger m-2" (click)='deleteTournament(tournament)'>
                         <i class="fas fa-trash-alt"></i> Delete
                     </a>
                 </div>
