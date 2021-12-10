@@ -7,7 +7,7 @@
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postinstall": "ng build --aot -prod"
+    "heroku-postbuild": "ng build --prod"
   },
   "engines": {
     "node": "14.x",
