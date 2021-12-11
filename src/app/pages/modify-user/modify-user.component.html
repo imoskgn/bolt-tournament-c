@@ -1,0 +1,28 @@
+<div class="container-fluid bolt-bg1 bolt-container">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <form (ngSubmit)="submit()">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="loginTitleLabel">My Profile</h1>
+                        <button type="button" class="btn close-model-button" data-bs-dismiss="modal" routerLink="/home"
+                        routeLinkActive="active"> X </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label">Phone Number:</label>
+                            <input type="text" class="form-control" id="phonenumber" [(ngModel)]="userPhoneNumber.phoneNumber" name="phoneNumber" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" [(ngModel)]="modifyUserForm.name" name="name">
+                        </div>
+                    </div> 
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary text-left">Update Profile</button>
+                    </div>
+            </form>
+        </div>
+    </div> 
+</div>

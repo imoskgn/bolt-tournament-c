@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   user: User | undefined;
   private routeSub: Subscription | undefined;
   userId:string ='';
+  userName!:string;
 
   constructor(
     private route:Router,
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.title = this.router.snapshot.data.title;
     this.authenticated=this.authService.isAuthenticated();
+    this.userName=localStorage.getItem('name') as string;
   }
 
   /*getuserById():void{

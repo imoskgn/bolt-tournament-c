@@ -23,6 +23,7 @@ import { ForumCreateComponent } from './forum/forum-create/forum-create.componen
 import { ForumMainComponent } from './forum/forum-main/forum-main.component';
 import { ForumDetailComponent } from './forum/forum-detail/forum-detail.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { ModifyUserComponent } from './pages/modify-user/modify-user.component';
 
 
 
@@ -42,7 +43,8 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
     ForumMainComponent,
     ForumCreateComponent,
     ForumDetailComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    ModifyUserComponent
   ],
   imports: [
     BrowserModule,

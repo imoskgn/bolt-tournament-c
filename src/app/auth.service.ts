@@ -16,7 +16,7 @@ export class AuthService {
   };
 
   constructor(private http: HttpClient, private route: Router) {}
-
+  
   //User login function
   userLogin(payload: any) {
     const url = this.boltUrl + 'user/login';
@@ -24,18 +24,33 @@ export class AuthService {
 
     this.http.post(url, payload).subscribe((res: any) => {
       if (res.accessToken) {
-        console.log(res.userInfo);
         localStorage.setItem('jwt', res.accessToken);
         localStorage.setItem('user', res.userInfo);
+        this.storeUserDetailsInLocalStorage(res.userInfo);
+
         alert('Login Successful');
         this.route.navigate(['/home']).then.call(window.location.reload());
       }
     });
   }
 
+    storeUserDetailsInLocalStorage(obj:any)
+    {
+      for(var key in obj)
+      {
+          if(key==='phoneNumber' || key==='name' || key==='_id'){
+            localStorage.setItem(key, obj[key]);
+          }
+      }
+    }
+
   //User logout function
   userLogout() {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('phoneNumber');
+    localStorage.removeItem('name');
+    localStorage.removeItem('_id');
+    localStorage.removeItem('user');
   }
 
   public isAuthenticated(): boolean {
@@ -56,5 +71,17 @@ export class AuthService {
         alert('User Registered');
       }
     });
+  }
+
+  // POST: Update existing User Information
+  updateUserInfo(userId: string,payload: any) {
+    console.log(`Updating User Info:`+JSON.stringify(payload))
+    const url = this.boltUrl + 'user/update/'+userId;
+
+    this.http.post(url,payload).subscribe(responseData => {
+      console.log(responseData)
+    })
+    
+    alert("User Details Updated Successfully.");
   }
 }
