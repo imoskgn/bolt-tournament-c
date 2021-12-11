@@ -26,7 +26,7 @@ export class DetailComponent implements OnInit {
   lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
-  loggedUser:User | undefined;
+  loggedUser: any | undefined;
   jwt: string | null | undefined;
 
   constructor(private router:ActivatedRoute, private dbService: DbService, private route:Router) { }
@@ -206,22 +206,25 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != t.userId){
+    if(this.loggedUser != t.userId){
       alert("You are not the owner of the tournament")
       this.route.navigate(['/home'])
       return;
     }     
     let playerName : any | undefined;
     playerName = t.playersList;
+    let complete = 0;
     for (let i = 0; i < playerName.length; i++) {
-      if (playerName[i].name =="" || playerName.length < 8)
+      if (playerName[i].name == "" || playerName.length < 8)
         {this.route.navigate(['/update/', t._id])
+        complete = 1;
         break;}
-      else 
-      {
-        this.dbService.createMatch(t)
-      }
     }
+    if (complete == 0){
+      this.dbService.createMatch(t).subscribe( any => {
+        this.ngOnInit();    
+    }); 
+  }
   }
   deleteTournament( tournament : Tournament): void{     
     if(!this.jwt){
@@ -229,7 +232,7 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != tournament.userId){
+    if(this.loggedUser != tournament.userId){
       alert("You are not the owner of the tournament")
       this.route.navigate(['/home'])
       return;
@@ -242,7 +245,7 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != tournament.userId){
+    if(this.loggedUser != tournament.userId){
       alert("You are not the owner of the tournament")
       this.route.navigate(['/home'])
       return;

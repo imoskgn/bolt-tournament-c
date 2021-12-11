@@ -5,10 +5,10 @@
             <div class="col-12" *ngIf="tournament">
                 <div *ngIf="tournament.status== 'started'">
                     <h1>Final Results</h1>
-                    <p class="fs-4">Champion:</p>                    
-                    <p class="fs-4" *ngIf="champion">{{champion}}</p>
-                    <p class="fs-2">Subchampion:</p>                    
-                    <p class="fs-2"*ngIf="subchampion">{{subchampion}}</p>
+                    <p class="fs-2">Champion:</p>                    
+                    <p class="fs-2" *ngIf="champion">{{champion}}</p>
+                    <p class="fs-4">Subchampion:</p>                    
+                    <p class="fs-4"*ngIf="subchampion">{{subchampion}}</p>
                 </div>
                 <div class="bolt-start  align-items-center text-center" *ngIf='!(tournament.status== "started")'>
                     <h3 class="w-40 m-auto text-black">Let the</h3>
@@ -68,10 +68,6 @@
                     <button class="nav-link text-black" id="tabMatch" data-bs-toggle="tab" data-bs-target="#dMatches"
                         type="button" role="tab" aria-controls="dMatches" aria-selected="false">Matches</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-black" id="tabForum" data-bs-toggle="tab" data-bs-target="#dForum"
-                        type="button" role="tab" aria-controls="dForum" aria-selected="false">Forum</button>
-                </li>
             </ul>
             <div class="tab-content bg-light mb-3" id="tContent">
                 <div class="tab-pane fade show active" id="dRranks" role="tabpanel" aria-labelledby="tabRank">
@@ -112,7 +108,8 @@
 
                     </div>
                     <!-- For Owners: *ngIf="Owner" and the tournament started -->
-                    <div *ngIf="tournament.status==='started'; else elseTournamentStarted">
+                    <div *ngIf="tournament.status == 'completed' || tournament.status == 'started'
+                    ; else elseTournamentStarted">
                         <!--For Owners: Each Match div *ngIf="winnersEditing"-->
                         <div *ngIf="winnersEditing; else winnersMatchDetails">
                             <div class="row p-4 align-items-center justify-content-center">
