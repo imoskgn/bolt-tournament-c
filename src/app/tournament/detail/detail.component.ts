@@ -206,19 +206,11 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-<<<<<<< HEAD
-    // if(this.loggedUser?._id != t.userId){
-    //   alert("You are not the owner of the tournament")
-    //   this.route.navigate(['/home'])
-    //   return;
-    // }     
-=======
     if(this.loggedUser != t.userId){
       alert("You are not the owner of the tournament")
       this.route.navigate(['/home'])
       return;
     }     
->>>>>>> bolt_dev_client
     let playerName : any | undefined;
     playerName = t.playersList;
     let complete = 0;
@@ -240,19 +232,11 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-<<<<<<< HEAD
-    // if(this.loggedUser?._id != tournament.userId){
-    //   alert("You are not the owner of the tournament")
-    //   this.route.navigate(['/home'])
-    //   return;
-    // }
-=======
     if(this.loggedUser != tournament.userId){
       alert("You are not the owner of the tournament")
       this.route.navigate(['/home'])
       return;
     }
->>>>>>> bolt_dev_client
     this.route.navigate(['/delete/', tournament._id])
   }
   updateTournament( tournament : Tournament): void{     
@@ -261,19 +245,11 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-<<<<<<< HEAD
-    // if(this.loggedUser?._id != tournament.userId){
-    //   alert("You are not the owner of the tournament")
-    //   this.route.navigate(['/home'])
-    //   return;
-    // }
-=======
     if(this.loggedUser != tournament.userId){
       alert("You are not the owner of the tournament")
       this.route.navigate(['/home'])
       return;
     }
->>>>>>> bolt_dev_client
     this.route.navigate(['/update/', tournament._id])
   }
 }
