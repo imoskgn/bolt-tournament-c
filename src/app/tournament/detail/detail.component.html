@@ -3,7 +3,7 @@
     <div class="row py-4 align-items-center">
         <div class="col-md-5 col-12 ">
             <div class="col-12" *ngIf="tournament">
-                <div *ngIf="tournament.status== "started" || tournament.status== "completed">
+                <div *ngIf='tournament.status== "started" || tournament.status== "completed"'>
                     <h1>Final Results</h1>
                     <p class="fs-2">Champion:</p>                    
                     <p class="fs-2" *ngIf="champion">{{champion}}</p>
