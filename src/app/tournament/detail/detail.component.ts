@@ -21,6 +21,8 @@ export class DetailComponent implements OnInit {
   m: Match[][] = [];
   level : number=1;
   winnersEditing: boolean=false;
+  champion: String = "";
+  subchampion: String = "";
   lastMatch: Match | undefined;
   private routeSub: Subscription | undefined;
   tournamentId:string ='';
@@ -142,7 +144,8 @@ export class DetailComponent implements OnInit {
         winner.winner=match.secondPlayer     
       }
       this.dbService.updateWinner(winner,match._id!).subscribe( any => {
-          this.ngOnInit();     
+          this.ngOnInit();
+          /* Check if the status of the T change to Ended */     
       });   
     }
      
@@ -171,6 +174,12 @@ export class DetailComponent implements OnInit {
             }
             if(this.level==3 && this.m[i][j].winner){
               this.level=4;
+              this.champion = this.m[i][j].winner.name;
+              if(this.m[i][j].winner.phoneNumber == this.m[i][j].firstPlayer.phoneNumber){
+                this.subchampion = this.m[i][j].secondPlayer.name;
+              }else{
+                this.subchampion = this.m[i][j].firstPlayer.name;
+              }
             }
           } 
 
