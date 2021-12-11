@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   tournaments: Tournament[]=[];
   title: string | undefined;
   users: User[] | undefined;
-  loggedUser: User | undefined;
+  loggedUser: any | undefined;
   jwt: string | null | undefined;
 
   constructor(private dbService: DbService, private route: ActivatedRoute, private router: Router) { }
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.getTournaments();
     this.title = this.route.snapshot.data.title;
     console.log(typeof(localStorage.getItem('user')))
-    this.loggedUser = JSON.parse(JSON.stringify(localStorage.getItem('user') || ''));
+    this.loggedUser = JSON.parse(JSON.stringify(localStorage.getItem('user')));
     this.jwt = localStorage.getItem('jwt');
   }
 
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != t.userId){
+    if(this.loggedUser != t.userId){
       alert("You are not the owner of the tournament")
       this.router.navigate(['/home'])
       return;
@@ -48,12 +48,14 @@ export class HomeComponent implements OnInit {
     let playerName : any | undefined;
     playerName = t.playersList;
     for (let i = 0; i < playerName.length; i++) {
-      if (playerName[i].name =="" || playerName.length < 8)
+      if (playerName[i].name == "" || playerName.length < 8)
         {this.router.navigate(['/update/', t._id])
         break;}
       else 
       {
+        t.status = "started";
         this.dbService.createMatch(t)
+        this.dbService.updtTournament(t)
       }
     }
   }
@@ -63,7 +65,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != tournament.userId){
+    if(this.loggedUser != tournament.userId){
       alert("You are not the owner of the tournament")
       this.router.navigate(['/home'])
       return;
@@ -71,12 +73,13 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/delete/', tournament._id])
   }
   updateTournament( tournament : Tournament): void{     
+    console.log(this.loggedUser + "gsjdfhgjshdfgj" + tournament.userId)
     if(!this.jwt){
       alert("To perform an update you should be logged in. \n Redirecting ....")
       this.router.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != tournament.userId){
+    if(this.loggedUser != tournament.userId){
       alert("You are not the owner of the tournament")
       this.router.navigate(['/home'])
       return;

@@ -26,7 +26,8 @@ export class AuthService {
       if (res.accessToken) {
         console.log(res.userInfo);
         localStorage.setItem('jwt', res.accessToken);
-        localStorage.setItem('user', res.userInfo);
+        console.log(res.userInfo);
+        localStorage.setItem('user', res.userInfo._id);
         alert('Login Successful');
         this.route.navigate(['/home']).then.call(window.location.reload());
       }
