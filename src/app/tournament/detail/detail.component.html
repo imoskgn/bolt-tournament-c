@@ -10,7 +10,7 @@
                     <p class="fs-4">Subchampion:</p>                    
                     <p class="fs-4"*ngIf="subchampion">{{subchampion}}</p>
                 </div>
-                <div class="bolt-start  align-items-center text-center" *ngIf='!(tournament.status== "started")'>
+                <div class="bolt-start  align-items-center text-center" *ngIf='!(tournament.status== "started" || tournament.status== "completed")'>
                     <h3 class="w-40 m-auto text-black">Let the</h3>
                     <h3 class="w-40 m-auto text-black">Tournament</h3>
                     <h3 class="w-40 m-auto text-black">begin!</h3>
