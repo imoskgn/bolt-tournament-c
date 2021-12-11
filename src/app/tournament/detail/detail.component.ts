@@ -144,12 +144,19 @@ export class DetailComponent implements OnInit {
         winner.winner=match.secondPlayer     
       }
       this.dbService.updateWinner(winner,match._id!).subscribe( any => {
-          this.ngOnInit();
-          /* Check if the status of the T change to Ended */     
+          this.ngOnInit();     
+          this.checkIfCompleted();
       });   
     }
      
   }  
+
+  checkIfCompleted(){
+    if (this.level==4){
+      this.tournament.status = "completed";
+      this.dbService.updtTournament(this.tournament);
+    }
+  }
   
 
   getTournamentLevel() {
@@ -180,6 +187,9 @@ export class DetailComponent implements OnInit {
               }else{
                 this.subchampion = this.m[i][j].firstPlayer.name;
               }
+              this.tournament.status = "completed";
+              this.dbService.updtTournament(this.tournament);
+              this.checkIfCompleted();
             }
           } 
 

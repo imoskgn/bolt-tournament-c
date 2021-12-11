@@ -28,11 +28,11 @@
                     <i class="fas fa-external-link-square-alt"></i> View Details
                 </a>
                 <a class="aqua-dark-button btn btn-dark m-2" (click)='startTournament(e)'
-                *ngIf= '!(e.status== "started")'>
+                *ngIf= '(e.status== "created")'>
                     <i class="fas fa-play-circle"></i> Start
                 </a> 
                 <a class="btn btn-warning m-2" (click)='updateTournament(e)'
-                *ngIf= '!(e.status== "started")'>
+                *ngIf= '(e.status== "created")'>
                     <i class="fas fa-edit"></i> Modify
                 </a>
                 <a class="btn btn-danger m-2" (click)='deleteTournament(e)'>
