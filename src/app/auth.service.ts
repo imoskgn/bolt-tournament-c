@@ -25,7 +25,7 @@ export class AuthService {
     this.http.post(url, payload).subscribe((res: any) => {
       if (res.accessToken) {
         localStorage.setItem('jwt', res.accessToken);
-        localStorage.setItem('user', res.userInfo);
+        localStorage.setItem('user', res.userInfo._id);
         this.storeUserDetailsInLocalStorage(res.userInfo);
 
         alert('Login Successful');
