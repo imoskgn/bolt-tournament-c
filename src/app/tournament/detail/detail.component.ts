@@ -206,11 +206,11 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != t.userId){
-      alert("You are not the owner of the tournament")
-      this.route.navigate(['/home'])
-      return;
-    }     
+    // if(this.loggedUser?._id != t.userId){
+    //   alert("You are not the owner of the tournament")
+    //   this.route.navigate(['/home'])
+    //   return;
+    // }     
     let playerName : any | undefined;
     playerName = t.playersList;
     for (let i = 0; i < playerName.length; i++) {
@@ -229,11 +229,11 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != tournament.userId){
-      alert("You are not the owner of the tournament")
-      this.route.navigate(['/home'])
-      return;
-    }
+    // if(this.loggedUser?._id != tournament.userId){
+    //   alert("You are not the owner of the tournament")
+    //   this.route.navigate(['/home'])
+    //   return;
+    // }
     this.route.navigate(['/delete/', tournament._id])
   }
   updateTournament( tournament : Tournament): void{     
@@ -242,11 +242,11 @@ export class DetailComponent implements OnInit {
       this.route.navigate(['/login'])
       return;
     }
-    if(this.loggedUser?._id != tournament.userId){
-      alert("You are not the owner of the tournament")
-      this.route.navigate(['/home'])
-      return;
-    }
+    // if(this.loggedUser?._id != tournament.userId){
+    //   alert("You are not the owner of the tournament")
+    //   this.route.navigate(['/home'])
+    //   return;
+    // }
     this.route.navigate(['/update/', tournament._id])
   }
 }
